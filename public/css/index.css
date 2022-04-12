@@ -1,0 +1,61 @@
+/* INICIO - SECTION 1 - Inicio */
+
+#inicio {
+    background: linear-gradient(#00000000, #0000008c), url(../assets/img/agronomi.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.art_inicio {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.div_apresentacao1 {
+    max-height: 100%;
+    width: 51%;
+}
+
+.div_apresentacao1>h1 {
+    color: #031523;
+    font-size: 35px;
+}
+
+.div_apresentacao1>p {
+    color: white;
+    font-size: 36px;
+}
+
+.div_apresentacao2>h1 {
+    color: white;
+    font-size: 35px;
+}
+
+.div_apresentacao2 {
+    background-color: #03152380;
+    padding: 10px 1%;
+    max-height: 100%;
+    width: 30vw;
+}
+
+.div_apresentacao2>p {
+    padding: 2%;
+    color: white;
+    font-size: 20px;
+}
+
+/* FIM - SECTION 1 - Inicio */
+
+
+/* INICIO - SECTION 2 - Produtos */
+
+#produtos {
+    background: linear-gradient(#0017467a, #031f5485), url(../assets/img/management.webp) no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* FIM - SECTION 2 - Produtos */

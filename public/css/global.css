@@ -1,0 +1,39 @@
+/* CSS da página INDEX */
+
+/* INICIO - ESTILOS TAGS */
+body {
+    font-family: monospace;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* FIM - ESTILOS TAGS */
+
+
+/* INICIO - ESTILOS GENÉRICOS */
+
+.pl-5 {
+    padding-left: 5em;
+}
+
+/* FIM - ESTILOS GENÉRICOS */

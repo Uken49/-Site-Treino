@@ -1,0 +1,49 @@
+/* INICIO - HEADER */
+
+.header {
+    position: fixed;
+    background-color: #031523;
+    padding: 0 0 2vh 0;
+    height: 12vh;
+    width: 100vw;
+    align-items: center;
+}
+
+.box-header {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.box-header img {
+    justify-content: flex-start;
+}
+
+.box-header {
+    align-items: flex-end;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.nav-header>.ul-header {
+    margin: 1% auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ul-header {
+    padding: 0;
+    gap: 3em;
+    font-size: 20px;
+}
+
+.ul-header>li>a {
+    color: #ffffff;
+}
+
+.ul-header>li>a:hover {
+    color: #9c9c9c;
+}
+
+/* FIM - HEADER */

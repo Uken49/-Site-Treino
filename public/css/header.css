@@ -1,0 +1,145 @@
+/* INICIO - HEADER */
+
+
+header {
+    position: fixed;
+    height: 90px;
+    min-height: 90px;
+    width: 100%;
+    max-width: 100%;
+    background-image: linear-gradient(to right, var(--cor-principal), #43c51a, var(--cor-principal));
+    margin: auto;
+}
+
+.img-logo {
+    width: 100px;
+}
+
+.wrapper {
+    height: 100%;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar {
+    height: auto;
+}
+
+.wrapper .nav-items {
+    padding: 0;
+    width: 100%;
+    gap: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.nav-items a {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.nav-items a:hover {
+    color: #3a3a3a;
+}
+
+.pl-5 {
+    padding-left: 5em;
+}
+.orange{
+    color: #ffa500;
+}
+
+
+/* Responsividade do HEADER */
+
+@media (max-width: 1170px) {
+    .wrapper .nav-items {
+        gap: 40px;
+    }
+
+    .pl-5 {
+        padding-left: 2em;
+    }
+}
+
+
+@media (max-width: 1022px) {
+    .wrapper .nav-items {
+        gap: 25px;
+    }
+
+    .pl-5 {
+        padding-left: 1em;
+    }
+}
+
+
+@media (max-width: 923px) {
+    .wrapper .nav-items {
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 843px) {
+    .wrapper {
+        width: 90%;
+    }
+
+    .navbar {
+        margin: 0 0 0 10px;
+    }
+
+    .wrapper .nav-items {
+        gap: 5px;
+    }
+
+    .img-logo {
+        width: 90px;
+    }
+
+}
+
+@media (max-width: 730px) {
+    .wrapper .nav-items {
+        gap: 10px;
+    }
+
+    .nav-items a {
+        font-size: 17px;
+    }
+
+    .pl-5 {
+        padding-left: 0;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .nav-items a {
+        font-size: 14px;
+    }
+
+    .wrapper {
+        width: 95%;
+    }
+}
+
+@media (max-width: 577px) {
+    .wrapper .nav-items {
+        gap: 9px;
+    }
+
+    .nav-items a {
+        font-size: 12px;
+    }
+}
+
+/* FIM - HEADER */

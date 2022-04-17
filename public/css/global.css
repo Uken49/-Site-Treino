@@ -26,9 +26,6 @@ li {
     list-style: none;
 }
 
-p{
-    text-indent: 10px;
-}
 
 
 /* Tirando a seta do input:number no Chrome, Safari, Edge, Opera*/

@@ -1,3 +1,7 @@
+p {
+    text-indent: 10px;
+}
+
 /* INICIO - SECTION 1 - Inicio */
 
 #index {
@@ -163,7 +167,7 @@
     color: #b4b4b4;
 }
 
-.btn-calc {
+.btn {
     background-color: #2a8727;
     color: #ffffff;
     border: none;
@@ -172,7 +176,7 @@
     height: 44px;
 }
 
-.btn-calc:hover {
+.btn:hover {
     background-color: #53be50;
     color: black;
     transition: 250ms ease-in-out;
@@ -185,7 +189,6 @@
     background-color: #ffa500;
     border-radius: 0 0 20px 20px;
 }
-
 
 .sys-sample {
     font-size: 18px;
@@ -451,7 +454,7 @@
         font-size: 19px;
     }
 
-    /* Calculadora */
+    /* Começo - Calculadora */
 
     .info {
         width: 100%;

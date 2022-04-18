@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/global.css">
+    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -32,8 +33,10 @@
         </div>
     </header>
 
+    <!-- Conteúdo -->
     <main>
         <section class="container">
+            <!-- Lado esquerdo do site -->
             <article class="content-image">
                 <div class="content-welcome">
                     <div>
@@ -43,10 +46,14 @@
 
                     <div>
                         <p class="signup">Ainda não tem uma conta?</p>
-                        <button class="btn-register">CADASTRAR</button>
+                        <a href="cadastro.html">
+                            <button class="btn-register">CADASTRAR</button>
+                        </a>
                     </div>
                 </div>
             </article>
+
+            <!-- Lado direito do site com o formulário -->
             <article class="content-login">
                 <div class="login-container">
                     <div class="title">
@@ -63,6 +70,7 @@
                         <div class="label-float">
                             <input id="inp_pass" type="password" placeholder=" " required>
                             <label>Senha</label>
+                            <i id="i_eye" onclick="seePass()" class="fa-solid fa-eye"></i>
                         </div>
 
                         <div>
@@ -81,3 +89,6 @@
 </body>
 
 </html>
+
+<!-- Exportando JavaScript local -->
+<script src="js/login.js"></script>

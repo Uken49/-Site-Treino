@@ -29,23 +29,22 @@ main {
     height: 100%;
     width: 40%;
     display: flex;
-    background: linear-gradient(#ffffffc9, #00000045), url('https://media.istockphoto.com/photos/green-cornfield-ready-for-harvest-late-afternoon-light-sunset-picture-id168351414?b=1&k=20&m=168351414&s=170667a&w=0&h=__ZT4ktjC__U8sct8O-mMiQoCCcEDxNFVZUhUau0fEI=') no-repeat center;
+    background: linear-gradient(#ffffffc9, #00000045), url(../assets/img/grass.jpg) no-repeat center;
     background-size: cover;
 }
 
 .content-welcome {
-    color: white;
-    height: 80%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
+    height: auto;
     width: 100%;
     margin: auto;
-    background-color: #4b740000;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 156px;
+    align-items: center;
     text-align: center;
-
+    background-color: #4b740000;
 }
 
 .content-welcome h2 {
@@ -65,7 +64,6 @@ main {
 .signup {
     width: 100%;
     height: auto;
-    font-size: 12px;
     padding: 0 0 3% 0;
 }
 
@@ -145,12 +143,20 @@ main {
     padding: 13px 0;
 }
 
+.label-float i {
+    position: absolute;
+    top: 17px;
+    right: 7px;
+    cursor: pointer;
+}
+
 .label-float input {
     border: 0;
     border-bottom: 2px solid lightgrey;
     outline: none;
     width: 100%;
-    font-size: 24px;
+    padding: 0 30px 0 0;
+    font-size: 20px;
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
@@ -172,7 +178,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    margin-top: 16px;
+    margin-top: 12px;
     transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
@@ -183,4 +189,14 @@ main {
     font-size: 14px;
     margin-top: 0;
     color: var(--cor-principal);
+}
+
+
+
+/* Responsividade */
+
+@media (max-width: 855px) {
+    .content-image {
+        display: none;
+    }
 }

@@ -1,6 +1,11 @@
+html {
+    scroll-behavior: smooth;
+}
+
 p {
     text-indent: 10px;
 }
+
 
 /* INICIO - SECTION 1 - Inicio */
 
@@ -156,11 +161,11 @@ p {
     background-color: #f5f5f5;
     border: solid 2px #dbdbdb;
     font-size: 14px;
-    padding: 6px 14px 6px 40px;
+    padding: 6px 14px 6px 14px;
 }
 
 .calc-input input:hover, .calc-input input:focus {
-    border: solid 2px #75a0d3;
+    border: solid 2px var(--cor-principal);
 }
 
 .calc-input input:focus::placeholder {
@@ -321,7 +326,7 @@ p {
 }
 
 .menu-item p {
-    height: 100%;
+    height: auto;
     width: 100%;
     padding: 5%;
     font-size: 17px;
@@ -330,6 +335,8 @@ p {
 .copy {
     font-size: 15px;
     text-indent: 0;
+    width: 70%;
+    text-align: center;
 }
 
 /* FIM- FOOTER - Contato */

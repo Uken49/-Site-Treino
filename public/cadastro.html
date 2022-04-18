@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Consult - Cadastrar</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/global.css">
+    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Barra de navegação -->
+    <header>
+        <div class="wrapper">
+            <img class="img-logo"
+                src="https://media.istockphoto.com/vectors/roundedsqr09stampsred-vector-id1159575132?k=20&m=1159575132&s=612x612&w=0&h=5rbLlspoCItgDKBJeN9HzF8AFU_MFWSzabo-MpCdkEA="
+                alt="imagem">
+
+            <nav class="navbar">
+                <ul class="nav-items">
+                    <li><a href="index.html#index">Inicio</a></li>
+                    <li><a href="index.html#calculator">Calculadora</a></li>
+                    <li><a href="index.html#about">Sobre Nós</a></li>
+                    <li><a href="index.html#footer">Contato</a></li>
+                    <li class="pl-5"><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="login.html">Entrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo -->
+    <main>
+        <section class="container">
+            <!-- Lado esquerdo do site -->
+            <article class="content-image">
+                <div class="content-welcome">
+                    <div>
+                        <h2>REGISTER NOW!</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a.</p>
+                    </div>
+
+                    <div>
+                        <p class="signin">Já se cadastrou?</p>
+                        <a href="login.html">
+                            <button class="btn-login">ENTRAR</button>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lado direito do site com o formulário -->
+            <article class="content-register">
+                <div class="register-container">
+                    <div class="title">
+                        <h1>Cadastrar</h1>
+                        <hr>
+                    </div>
+
+                    <div class="inp-container">
+                        <div class="label-float">
+                            <input id="inp_nome" type="text" placeholder=" ">
+                            <label>Nome Completo</label>
+                        </div>
+
+                        <div class="label-float">
+                            <input id="inp_cnpj" type="number" placeholder=" ">
+                            <label>CNPJ</label>
+                        </div>
+
+                        <div class="label-float">
+                            <input id="inp_email" type="email" placeholder=" ">
+                            <label>Email</label>
+                        </div>
+
+                        <div class="label-float">
+                            <input id="inp_pass" type="password" placeholder=" ">
+                            <label>Senha</label>
+                            <i id="i_eye_pass" onclick="seePass()" class="fa-solid fa-eye"></i>
+                        </div>
+
+                        <div class="label-float">
+                            <input id="inp_pass_conf" type="password" placeholder=" ">
+                            <label>Confirmar Senha</label>
+                            <i id="i_eye_pass_conf" onclick="seePassConf()" class="fa-solid fa-eye"></i>
+                        </div>
+                    </div>
+                    <button class="btn-register">ENTRAR</button>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
+
+<!-- Exportando JavaScript local -->
+<script src="js/cadastro.js"></script>

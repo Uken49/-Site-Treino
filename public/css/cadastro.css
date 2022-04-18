@@ -51,7 +51,6 @@ main {
     font-size: 50px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000000;
-
 }
 
 .content-welcome p {
@@ -147,6 +146,7 @@ main {
     top: 17px;
     right: 7px;
     cursor: pointer;
+    color: #000000;
 }
 
 .label-float input {
@@ -190,12 +190,37 @@ main {
     color: #0091aa;
 }
 
+/* Classes usada na validação */
+.valid :is(input, input:focus, label, span) {
+    --color-valid: #008000;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
 
+.missing :is(input, input:focus, label, span) {
+    --color-valid: #b9a016;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
+
+.invalid :is(input, input:focus, label, span) {
+    --color-valid: #ff0000;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
 
 /* Responsividade */
 
 @media (max-width: 855px) {
     .content-image {
         display: none;
+    }
+
+    .content-register, .inp-container {
+        width: 100%;
+    }
+
+    .title {
+        width: 80%;
     }
 }

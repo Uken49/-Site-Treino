@@ -72,7 +72,7 @@ main {
     color: #ffffff;
     border-radius: 50px;
     width: 155px;
-    height: 44px;
+    min-height: 44px;
 }
 
 .btn-login {
@@ -101,14 +101,15 @@ main {
 
 /* Lado direito com o formulário */
 .content-register {
-    height: auto;
+    height: 100%;
     width: 60%;
     margin: auto;
 }
 
 .register-container {
-    height: auto;
+    height: 100%;
     width: 100%;
+    padding: 10px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,11 +126,11 @@ main {
 .inp-container {
     height: auto;
     width: 70%;
-    padding: 40px 0;
+    padding: 13px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
+    row-gap: 12px;
 }
 
 

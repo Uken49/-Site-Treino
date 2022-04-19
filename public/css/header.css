@@ -1,6 +1,5 @@
 /* INICIO - HEADER */
 
-
 header {
     position: fixed;
     height: 90px;
@@ -47,6 +46,7 @@ header {
 
 .nav-items a:hover {
     color: #3a3a3a;
+    transition: 300ms;
 }
 
 .pl-5 {

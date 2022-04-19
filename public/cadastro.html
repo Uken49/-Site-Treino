@@ -62,20 +62,20 @@
                     </div>
 
                     <div class="inp-container">
-                        <div class="label-float" id="label_nome">
-                            <input id="inp_nome" type="text" placeholder=" ">
+                        <div class="label-float" id="label_name">
+                            <input id="inp_name" oninput="valName()" type="text" placeholder=" " title="Insira o nome completo">
                             <label>Nome Completo</label>
                             <span id="warning_name"></span>
                         </div>
 
-                        <div class="label-float" id="label_cnpj">
-                            <input id="inp_cnpj" type="number" placeholder=" ">
+                        <div class="label-float" oninput="valCnpj()" id="label_cnpj">
+                            <input id="inp_cnpj" type="text" placeholder=" " title="">
                             <label>CNPJ</label>
                             <span id="warning_cnpj"></span>
                         </div>
 
                         <div class="label-float" id="label_email">
-                            <input id="inp_email" type="email" placeholder=" ">
+                            <input id="inp_email" oninput="valEmail()" type="email" placeholder=" ">
                             <label>Email</label>
                             <span id="warning_email"></span>
                         </div>
@@ -93,7 +93,7 @@
                             <span id="warning_pass_conf"></span>
                         </div>
                     </div>
-                    <button class="btn-register">ENTRAR</button>
+                    <button onclick="valSubmit()" class="btn-register">ENTRAR</button>
                 </div>
             </article>
         </section>

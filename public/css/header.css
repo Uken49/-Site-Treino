@@ -53,11 +53,6 @@ header {
     padding-left: 5em;
 }
 
-.orange {
-    color: #ffa500;
-}
-
-
 /* Responsividade do HEADER */
 
 @media (max-width: 1170px) {

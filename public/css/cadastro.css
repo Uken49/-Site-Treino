@@ -51,7 +51,6 @@ main {
     font-size: 50px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000000;
-
 }
 
 .content-welcome p {
@@ -73,7 +72,7 @@ main {
     color: #ffffff;
     border-radius: 50px;
     width: 155px;
-    height: 44px;
+    min-height: 44px;
 }
 
 .btn-login {
@@ -102,14 +101,15 @@ main {
 
 /* Lado direito com o formulário */
 .content-register {
-    height: auto;
+    height: 100%;
     width: 60%;
     margin: auto;
 }
 
 .register-container {
-    height: auto;
+    height: 100%;
     width: 100%;
+    padding: 10px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,11 +126,11 @@ main {
 .inp-container {
     height: auto;
     width: 70%;
-    padding: 40px 0;
+    padding: 13px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
+    row-gap: 12px;
 }
 
 
@@ -147,6 +147,7 @@ main {
     top: 17px;
     right: 7px;
     cursor: pointer;
+    color: #000000;
 }
 
 .label-float input {
@@ -190,12 +191,37 @@ main {
     color: #0091aa;
 }
 
+/* Classes usada na validação */
+.valid :is(input, input:focus, label, span) {
+    --color-valid: #008000;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
 
+.missing :is(input, input:focus, label, span) {
+    --color-valid: #b9a016;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
+
+.invalid :is(input, input:focus, label, span) {
+    --color-valid: #ff0000;
+    color: var(--color-valid) !important;
+    border-bottom-color: var(--color-valid);
+}
 
 /* Responsividade */
 
 @media (max-width: 855px) {
     .content-image {
         display: none;
+    }
+
+    .content-register, .inp-container {
+        width: 100%;
+    }
+
+    .title {
+        width: 80%;
     }
 }

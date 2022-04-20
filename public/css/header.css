@@ -1,6 +1,5 @@
 /* INICIO - HEADER */
 
-
 header {
     position: fixed;
     height: 90px;
@@ -47,12 +46,14 @@ header {
 
 .nav-items a:hover {
     color: #3a3a3a;
+    transition: 300ms;
 }
 
 .pl-5 {
     padding-left: 5em;
 }
-.orange{
+
+.orange {
     color: #ffa500;
 }
 
@@ -113,7 +114,7 @@ header {
     }
 
     .nav-items a {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .pl-5 {
@@ -139,6 +140,34 @@ header {
 
     .nav-items a {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 479px) {
+    .wrapper .nav-items {
+        gap: 5px;
+    }
+
+    .wrapper {
+        width: 99%;
+    }
+
+    .nav-items a {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 387px) {
+    .wrapper .nav-items {
+        gap: 4px;
+    }
+
+    .wrapper {
+        width: 99%;
+    }
+
+    .nav-items a {
+        font-size: 9px;
     }
 }
 

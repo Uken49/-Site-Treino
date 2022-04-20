@@ -62,34 +62,38 @@
                     </div>
 
                     <div class="inp-container">
-                        <div class="label-float">
-                            <input id="inp_nome" type="text" placeholder=" ">
+                        <div class="label-float" id="label_name">
+                            <input id="inp_name" oninput="valName()" type="text" placeholder=" " title="Insira o nome completo">
                             <label>Nome Completo</label>
+                            <span id="warning_name"></span>
                         </div>
 
-                        <div class="label-float">
-                            <input id="inp_cnpj" type="number" placeholder=" ">
+                        <div class="label-float" oninput="valCnpj()" id="label_cnpj">
+                            <input id="inp_cnpj" type="text" placeholder=" " title="">
                             <label>CNPJ</label>
+                            <span id="warning_cnpj"></span>
                         </div>
 
-                        <div class="label-float">
-                            <input id="inp_email" type="email" placeholder=" ">
+                        <div class="label-float" id="label_email">
+                            <input id="inp_email" oninput="valEmail()" type="email" placeholder=" ">
                             <label>Email</label>
+                            <span id="warning_email"></span>
                         </div>
 
-                        <div class="label-float">
-                            <input id="inp_pass" type="password" placeholder=" ">
+                        <div class="label-float" id="label_pass">
+                            <input id="inp_pass" oninput="passCheck()" type="password" placeholder=" ">
                             <label>Senha</label>
                             <i id="i_eye_pass" onclick="seePass()" class="fa-solid fa-eye"></i>
+                            <span id="warning_pass"></span>
                         </div>
 
-                        <div class="label-float">
-                            <input id="inp_pass_conf" type="password" placeholder=" ">
+                        <div class="label-float" id="label_pass_conf">
+                            <input id="inp_pass_conf" oninput="valPass()" type="password" placeholder=" ">
                             <label>Confirmar Senha</label>
-                            <i id="i_eye_pass_conf" onclick="seePassConf()" class="fa-solid fa-eye"></i>
+                            <span id="warning_pass_conf"></span>
                         </div>
                     </div>
-                    <button class="btn-register">ENTRAR</button>
+                    <button onclick="valSubmit()" class="btn-register">ENTRAR</button>
                 </div>
             </article>
         </section>

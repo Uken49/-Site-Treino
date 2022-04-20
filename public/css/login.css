@@ -94,7 +94,6 @@ main {
     transition: 250ms ease-in-out;
 }
 
-
 .btn-login:hover {
     background-color: #53be50;
     color: black;
@@ -191,12 +190,18 @@ main {
     color: var(--cor-principal);
 }
 
-
-
 /* Responsividade */
 
 @media (max-width: 855px) {
     .content-image {
         display: none;
+    }
+
+    .content-login, .inp-container {
+        width: 100%;
+    }
+
+    .title {
+        width: 80%;
     }
 }

@@ -10,9 +10,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="manifest" href="../assets/favicon/site.webmanifest">
     <title>Agro Consult</title>
 </head>
 
@@ -24,54 +21,72 @@
 
             <nav class="header-navbar">
                 <ul class="header-nav-items">
-                    <li><ion-icon name="log-out-outline"></ion-icon></li>
-                    <li><ion-icon name="help-outline"></ion-icon></li>
+                    <li><img src="../assets/svg/notification.svg"></li>
+                    <li><img src="../assets/svg/help.svg"></li>
                 </ul>
                 <div class="header-nav-box">
                     <span>Fernando Brandão</span>
-                    <ion-icon name="chevron-down-outline"></ion-icon>
+                    <img src="../assets/svg/down-arrow.svg">
+                    <ul>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/user-perfil.svg"></span>
+                            <span class="title">Meu Perfil</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/settings.svg"></span>
+                            <span class="title">Configuração</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/logout.svg"></span>
+                            <span class="title">Sair</span>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Barra de navegação do lado direito - menu -->
         <aside class="side-bar">
             <ul>
                 <li class="list active">
                     <a href="index.html">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="icon"><img src="../assets/svg/home.svg"></span>
                         <span class="title">Inicio</span>
                     </a>
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                        <span class="icon"><img src="../assets/svg/chart.svg"></span>
                         <span class="title">Gráficos</span>
                     </a>
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="icon"><img src="../assets/svg/help.svg"></span>
                         <span class="title">Ajuda</span>
                     </a>
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                        <span class="title">Configuração</span>
+                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
+                        <span class="title">Usuários online</span>
                     </a>
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="icon"><img src="../assets/svg/logout.svg"></span>
                         <span class="title">Sair</span>
                     </a>
                 </li>
             </ul>
         </aside>
+
+        <!-- Conteúdo da página -->
     </main>
 </body>
+
 </html>
 
 <script src="js/side-bar.js"></script>

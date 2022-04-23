@@ -29,6 +29,7 @@ main {
     height: 100%;
 }
 
+
 /* Tirando a seta do input:number no Chrome, Safari, Edge, Opera*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -68,14 +69,22 @@ header {
 .header-navbar {
     height: 100%;
     width: 100%;
+    position: absolute;
+    left: 0;
     display: flex;
     justify-content: flex-end;
     column-gap: 20px;
 }
 
+.header-navbar nav img {
+    height: 27px;
+    color: #fff;
+}
+
 .header-nav-items {
     display: flex;
     font-size: 25px;
+    gap: 30px;
     align-items: center;
 }
 
@@ -83,19 +92,61 @@ header {
     cursor: pointer;
 }
 
+nav img {
+    height: 27px;
+    color: #fff;
+}
+
 .header-nav-box {
     height: 100%;
     width: 20%;
     min-width: 170px;
+    position: relative;
     color: #ffffff;
-    margin: 0 0 0 20px;
     font-size: 16px;
     background-color: #297406;
     display: flex;
     align-items: center;
-    column-gap: 10px;
+    column-gap: 2px;
     justify-content: center;
     cursor: pointer;
+}
+
+.header-nav-box ul {
+    height: 0;
+    width: 20%;
+    position: fixed;
+    top: var(--header-height);
+    min-width: 170px;
+    background-color: #424242;
+    transition: 250ms linear;
+}
+
+.header-nav-box:hover ul {
+    height: 100%;
+}
+
+.header-nav-box:hover ul li {
+    visibility: visible;
+}
+
+.header-nav-box ul li {
+    height: 40px;
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    transition: 250ms linear;
+}
+
+.header-nav-box ul li:hover {
+    height: 40px;
+    background: #535353;
+    transition: 250ms ease-in-out;
+}
+
+.header-nav-box ul li .icon {
+    width: 60px;
+    text-align: center;
 }
 
 .header-nav-box:hover {
@@ -104,6 +155,7 @@ header {
     transition: 250ms ease-in-out;
 }
 
+
 /* FIM - HEADER */
 
 
@@ -111,7 +163,6 @@ header {
 .side-bar {
     position: fixed;
     top: var(--header-height);
-    height: calc(100% - var(--header-height));
     height: 100%;
     width: 70px;
     background-color: #424242;
@@ -137,18 +188,32 @@ header {
     position: relative;
     list-style: none;
     width: 100%;
-    padding: 20px 0;
+    margin: 22px 0;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+}
+
+.side-bar ul li:hover {
+    background-color: #535353;
+    transition: 250ms ease-in-out;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 1;
 }
 
 .side-bar ul li a {
     position: relative;
     display: flex;
+    padding: 20px 0;
     align-items: center;
     width: 100%;
     text-decoration: none;
     color: #fff;
+    white-space: nowrap;
+}
+
+.icon img {
+    filter: invert(100%) sepia(100%) saturate(28%) hue-rotate(48deg) brightness(106%) contrast(109%);
 }
 
 .side-bar ul li a .icon {
@@ -159,10 +224,11 @@ header {
     text-align: center;
 }
 
-.side-bar ul li a .icon ion-icon {
+.side-bar ul li a .icon img {
     position: relative;
     font-size: 1.5rem;
     z-index: 1;
+    height: 25px;
 }
 
 .side-bar ul li a .icon .title {
@@ -180,7 +246,7 @@ header {
 .side-bar ul li.active a::after {
     content: '';
     position: absolute;
-    top: -50px;
+    top: -30px;
     right: 0;
     width: 30px;
     height: 30px;
@@ -192,7 +258,7 @@ header {
 .side-bar ul li.active a::before {
     content: '';
     position: absolute;
-    bottom: -50px;
+    bottom: -30px;
     right: 0;
     width: 30px;
     height: 30px;

@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Consult - Cadastrar</title>
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="css/global.css">
+    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
     <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
 </head>
 
@@ -16,17 +20,19 @@
     <!-- Barra de navegação -->
     <header>
         <div class="wrapper">
-            <img class="img-logo"
-                src="https://media.istockphoto.com/vectors/roundedsqr09stampsred-vector-id1159575132?k=20&m=1159575132&s=612x612&w=0&h=5rbLlspoCItgDKBJeN9HzF8AFU_MFWSzabo-MpCdkEA="
-                alt="imagem">
+            <a href="index.html">
+                <img class="img-logo" src="assets/img/logo-agroconsult.png" alt="imagem">
+            </a>
 
+    
             <nav class="navbar">
                 <ul class="nav-items">
                     <li><a href="index.html#index">Inicio</a></li>
-                    <li><a href="index.html#calculator">Calculadora</a></li>
-                    <li><a href="index.html#about">Sobre Nós</a></li>
+                    <li><a href="index.html#project">Projetos</a></li>
+                    <li><a href="index.html#about">Sobre-Nós</a></li>
                     <li><a href="index.html#footer">Contato</a></li>
-                    <li class="pl-5"><a href="cadastro.html">Cadastro</a></li>
+                    <li class="pl-3"><a href="calculadora.html">Calculadora</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Entrar</a></li>
                 </ul>
             </nav>
@@ -63,27 +69,29 @@
 
                     <div class="inp-container">
                         <div class="label-float" id="label_name">
-                            <input id="inp_name" oninput="valName()" type="text" placeholder=" " title="Insira o nome completo">
+                            <input id="inp_name" oninput="valName()" type="text" placeholder=" "
+                                title="Insira o nome completo">
                             <label>Nome Completo</label>
                             <span id="warning_name"></span>
                         </div>
 
                         <div class="label-float" oninput="valCnpj()" id="label_cnpj">
-                            <input id="inp_cnpj" type="text" placeholder=" " title="">
+                            <input id="inp_cnpj" type="text" placeholder=" " title="Insira o CNPJ da sua empresa">
                             <label>CNPJ</label>
                             <span id="warning_cnpj"></span>
                         </div>
 
                         <div class="label-float" id="label_email">
-                            <input id="inp_email" oninput="valEmail()" type="email" placeholder=" ">
+                            <input id="inp_email" oninput="valEmail()" type="email" placeholder=" "
+                                title="Insira um email para contato e login">
                             <label>Email</label>
                             <span id="warning_email"></span>
                         </div>
 
                         <div class="label-float" id="label_pass">
-                            <input id="inp_pass" oninput="passCheck()" type="password" placeholder=" ">
+                            <input id="inp_pass" oninput="passCheck()" type="password" placeholder=" "
+                                title="Senha com no mínimo 8 digitos, com número, letra e caractere especial">
                             <label>Senha</label>
-                            <i id="i_eye_pass" onclick="seePass()" class="fa-solid fa-eye"></i>
                             <span id="warning_pass"></span>
                         </div>
 

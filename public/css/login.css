@@ -1,6 +1,12 @@
 /* INICIO - ESTILOS TAGS */
+
+a {
+    color: #0000ff;
+}
+
 header {
-    position: static;
+    position: static !important;
+    box-shadow: none !important;
 }
 
 hr {
@@ -29,7 +35,7 @@ main {
     height: 100%;
     width: 40%;
     display: flex;
-    background: linear-gradient(#ffffffc9, #00000045), url(../assets/img/grass.jpg) no-repeat center;
+    background: linear-gradient(#e2ffdec9, #17221b3b), url(../assets/img/grass.jpg) no-repeat center;
     background-size: cover;
 }
 
@@ -78,18 +84,17 @@ main {
 
 .btn-register {
     border: 1px solid #ffffff;
-    background-color: transparent;
+    background-color: #026400;
 }
 
 .btn-login {
     border: none;
     background-color: #2a8727;
-    border: none;
 }
 
 .btn-register:hover {
-    background-color: #026400;
-    border: none;
+    background-color: #024901;
+    border: 1px solid #8f8f8f;
     color: #c0c0c0;
     transition: 250ms ease-in-out;
 }

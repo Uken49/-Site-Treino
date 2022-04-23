@@ -1,19 +1,3 @@
-// Função para exibir/esconder a senha
-function seePass() {
-    let eye = document.getElementById('i_eye_pass')
-    let pass = document.getElementById('inp_pass')
-
-    if (pass.type == 'password') {
-        eye.className = 'fa-solid fa-eye-slash'
-        pass.type = 'text'
-    } else {
-        pass.type = 'password'
-        eye.className = 'fa-solid fa-eye'
-    }
-}
-
-// Função para validar senha
-
 // Checando se a senha é válida
 function passCheck() {
     let pass = document.getElementById('inp_pass').value

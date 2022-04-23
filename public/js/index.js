@@ -2,4 +2,4 @@
 const actDate = new Date();
 const actYear = actDate.getFullYear();
 
-spn_year.innerHTML = actYear
+document.getElementById("spn_year").innerHTML = actYear

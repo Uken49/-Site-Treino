@@ -1,6 +1,6 @@
 /* INICIO - ESTILOS TAGS */
 header {
-    position: static;
+    position: static !important;
 }
 
 hr {
@@ -77,18 +77,17 @@ main {
 
 .btn-login {
     border: 1px solid #ffffff;
-    background-color: transparent;
+    background-color: #026400;
 }
 
 .btn-register {
     border: none;
     background-color: #2a8727;
-    border: none;
 }
 
 .btn-login:hover {
-    background-color: #026400;
-    border: none;
+    background-color: #024901;
+    border: 1px solid #8f8f8f;
     color: #c0c0c0;
     transition: 250ms ease-in-out;
 }
@@ -193,21 +192,21 @@ main {
 
 /* Classes usada na validação */
 .valid :is(input, input:focus, label, span) {
-    --color-valid: #008000;
-    color: var(--color-valid) !important;
-    border-bottom-color: var(--color-valid);
+    --color-validation: #008000;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
 }
 
 .missing :is(input, input:focus, label, span) {
-    --color-valid: #b9a016;
-    color: var(--color-valid) !important;
-    border-bottom-color: var(--color-valid);
+    --color-validation: #b9a016;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
 }
 
 .invalid :is(input, input:focus, label, span) {
-    --color-valid: #ff0000;
-    color: var(--color-valid) !important;
-    border-bottom-color: var(--color-valid);
+    --color-validation: #ff0000;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
 }
 
 /* Responsividade */

@@ -2,30 +2,42 @@
 <html lang="pt">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Helder Davidson Rodrigues Alvarenga">
+    <meta name="keywords" content="milho, lucro, aumento, tecnologia, lavoura">
+    <meta name="description"
+        content="O melhor da tecnologia de monitoramento para da sua lavoura, consiga um aumento nos lucros em até 16% na sua plantação de milho.">
     <title>Agro Consult - O melhor da tecnologia para seu negócio</title>
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/global.css">
+    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- Barra de navegação -->
     <header>
         <div class="wrapper">
-            <img class="img-logo"
-                src="https://media.istockphoto.com/vectors/roundedsqr09stampsred-vector-id1159575132?k=20&m=1159575132&s=612x612&w=0&h=5rbLlspoCItgDKBJeN9HzF8AFU_MFWSzabo-MpCdkEA="
-                alt="imagem">
+            <a href="index.html">
+                <img class="img-logo" src="assets/img/logo-agroconsult.png" alt="imagem">
+            </a>
 
             <nav class="navbar">
                 <ul class="nav-items">
                     <li><a href="index.html#index">Inicio</a></li>
-                    <li><a href="index.html#calculator">Calculadora</a></li>
-                    <li><a href="index.html#about">Sobre Nós</a></li>
+                    <li><a href="index.html#project">Projetos</a></li>
+                    <li><a href="index.html#about">Sobre-Nós</a></li>
                     <li><a href="index.html#footer">Contato</a></li>
-                    <li class="pl-5"><a href="cadastro.html">Cadastro</a></li>
+                    <li class="pl-3"><a href="calculadora.html">Calculadora</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Entrar</a></li>
                 </ul>
             </nav>
@@ -60,98 +72,30 @@
             </article>
         </section>
 
-        <!-- Calculadora financeira -->
-        <section id="calculator">
+        <!-- Projetos da Agro Consult -->
+        <section id="project">
             <article class="container">
                 <!-- Contextualizando a calculadora -->
                 <article class="context">
-                    <div class="box-left">
-                        <h2>What is Lorem Ipsum?</h2>
+                    <div class="proj-box">
+                        <h2>Projetos</h2>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been
-                            the industry's
-                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                            scrambled it to make a
-                            type specimen book. It has survived not only five centuries, but also the leap into
-                            electronic
-                            typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset
-                            sheets containing
-                            Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                            PageMaker
-                            including versions of
-                            Lorem Ipsum.
-                        </p>
-                    </div>
-                    <div class="box-right">
-                        <h2>Where does it come from?</h2>
-                        <p>
-                            There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be
-                            sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-                            generators on the Internet tend to repeat predefined chunks as necessary, making this the
-                            first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined
-                            with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-                            The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
-                            non-characteristic words etc.
+                            Atualmente estamos desenvolvendo um projeto de monitoramento de umidade e temperatura do
+                            milho, utilizando sensores conectados em uma placa arduino. Com esse projeto, visamos
+                            diminuir o prejuízo que as lavouras tem em suas plantações em até <b>16%</b>. Interessado?
+                            Consulte nossa <a href="calculadora.html">calculadora financeira</a> para mais informações.
                         </p>
                     </div>
                 </article>
 
-                <article class="calc-container">
-                    <!-- Informações sobre a calculadora - lado esquerdo -->
-                    <div class="info">
-                        <ul>
-                            <li>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker</li>
-                            <li>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker</li>
-                            <li>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker</li>
-                            <li>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker</li>
-                        </ul>
-                    </div>
-
-                    <!-- Parte funcional da calculadora - lado direito -->
-                    <div class="calc-input">
-                        <h1>Calculadora</h1>
-
-                        <span>Com o nosso sistema, garantimos um aumento de 16% na produção do milho.</span>
-
-                        <label for="inp_tamLavoura"></label>
-                        <input type="number" id="inp_tamLavoura" placeholder="O tamanho da sua lavoura (em hectare)">
-
-                        <label for="inp_qtdSacas"></label>
-                        <input type="number" id="inp_qtdSacas" placeholder="A quantidade de sacas por hectare">
-
-                        <button class="btn">CALCULAR</button>
-                    </div>
+                <!-- Iframe do google maps -->
+                <article class="proj-container">
+                    <h2>Onde estamos?</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7314.478915495594!2d-46.66345184923725!3d-23.559841823379138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2b063f663%3A0xc567c0d16d0bc582!2sS%C3%A3o%20Paulo%20Tech%20School!5e0!3m2!1spt-BR!2sbr!4v1650569778271!5m2!1spt-BR!2sbr"
+                        width="90%" height="450" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </article>
-            </article>
-
-            <!-- Fotos de amostra do sistema -->
-            <article class="system">
-                <div class="sys-sample">
-                    <figure>
-                        <figcaption>Gráfico</figcaption>
-                        <img src="https://google.github.io/charts/flutter/example/bar_charts/simple_full.png"
-                            alt="Demonstração do sistema de monitoramento">
-                    </figure>
-                    <figure>
-                        <figcaption>Gráfico</figcaption>
-                        <img src="https://apexcharts.com/wp-content/uploads/2018/05/simple-pie-chart.svg"
-                            alt="Demonstração do sistema de monitoramento">
-                    </figure>
-                    <figure>
-                        <figcaption>Gráfico</figcaption>
-                        <img src="https://datavizproject.com/wp-content/uploads/2015/10/3-Donut-Chart.png"
-                            alt="Demonstração do sistema de monitoramento">
-                    </figure>
-                </div>
             </article>
         </section>
 
@@ -160,110 +104,117 @@
             <article class="container">
                 <!-- Sobre a equipe/empresa -->
                 <div class="about-team">
-                    <h2>Where does it come from?</h2>
+                    <h2>Quem somos nós?</h2>
                     <p>
-                        Nosso time trabalha com Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                        unknown printer took a
-                        galley of type and scrambled it to make a type specimen book. It has survived not only five
-                        centuries, but also the leap into
-                        electronic typesetting. Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has
-                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley of type and
-                        scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                        leap into
-                        electronic typesetting
+                        Somos jovens universitários que lutam para ter uma vida melhor através dos estudos, acreditamos
+                        que a tecnologia tem a capacidade de mudar vidas de maneira positiva e com a incorporação dela
+                        em nosso cotidiano, muitos problemas poderam ser corrigidos ou amenizados.
+                    </p>
+                    <p>
+                        Formamos a Agro Consult com o objetivo de melhorar a produção de milho e evitar desperdício por
+                        conta do setor agrícola, agora estamos em busca de desenvolver nossas capacidades para podermos
+                        impactar ainda mais utilizando a tecnologia da informação.
                     </p>
                 </div>
                 <!-- Foto dos membros da equipe/empresa -->
                 <div class="about-card">
-                    <h2>Team bla bla bla</h2>
+                    <h2>Agro Consult</h2>
                     <div class="team-pic">
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="https://instagram.com/oemersonjosesantos?igshid=YmMyMTA2M2Y=">
+                                <figcaption>
+                                    <h3>Emerson José</h3>
+                                </figcaption>
+                                <img class="people-card" src="assets/img/dev-emerson.jpg" alt="Emerson José">
+                                <figcaption>DBA</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="https://www.instagram.com/_fe.pires_/?hl=en">
+                                <figcaption>
+                                    <h3>Felipe Pires</h3>
+                                </figcaption>
+                                <img class="people-card" src="assets/img/dev-felipe.jpg" alt="Felipe Pires">
+                                <figcaption>Analista</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="https://www.linkedin.com/in/gabriel-henrique-de-camargo-bordin-59a9a5229">
+                                <figcaption>
+                                    <h3>Gabriel Henrique</h3>
+                                </figcaption>
+                                <img class="people-card" src="" alt="Gabriel Henrique">
+                                <figcaption>DBA</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="https://www.linkedin.com/in/helder-alvarenga/">
+                                <figcaption>
+                                    <h3>Helder Davidson</h3>
+                                </figcaption>
+                                <img class="people-card" src="assets/img/dev-helder.jpg" alt="Helder D.R. Alvarenga">
+                                <figcaption>Fullstack</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="">
+                                <figcaption>
+                                    <h3>Henrique Oliveira</h3>
+                                </figcaption>
+                                <img class="people-card" src="assets/img/dev-henrique.jpg" alt="Henrique Oliveira">
+                                <figcaption>Designer</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <figcaption>
-                                <h3>People</h3>
-                            </figcaption>
-                            <img class="people-card" src="" alt="">
-                            <figcaption>Developer</figcaption>
+                            <a href="https://www.linkedin.com/in/leandro-costa-861441231/">
+                                <figcaption>
+                                    <h3>Leandro Vieira</h3>
+                                </figcaption>
+                                <img class="people-card" src="assets/img/dev-leonardo.jpg" alt="">
+                                <figcaption>Analista</figcaption>
+                            </a>
                         </figure>
                     </div>
                 </div>
             </article>
         </section>
-
-        <!-- Rodapé -->
-        <footer id="footer">
-            <section class="container">
-                <article class="footer-menu">
-                    <!-- Parte 1 -->
-                    <div class="menu-item">
-                        <h4>Sample</h4>
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a</p>
-                    </div>
-                    <!-- Parte 2 -->
-                    <div class="menu-item">
-                        <h4>Sample</h4>
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a</p>
-                    </div>
-                    <!-- Parte 3 -->
-                    <div class="menu-item">
-                        <h4>Sample</h4>
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a</p>
-                    </div>
-                    <!-- Parte 4 -->
-                    <div class="menu-item">
-                        <h4>Sample</h4>
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a</p>
-                    </div>
-                </article>
-                <!-- Marca de copyright -->
-                <article class="copy">
-                    <hr>
-                    <p>&copy; <span id="spn_year"></span> Todos os direitos reservados para Agro Consult</p>
-                </article>
-            </section>
-        </footer>
     </main>
+
+    <!-- Rodapé -->
+    <footer id="footer">
+        <section class="container">
+            <article class="footer-menu">
+                <!-- Parte 1 -->
+                <div class="menu-item">
+                    <h4>Equipe Agro Consult</h4>
+                    <ul>
+                        <li>Emerson José dos Santos</li>
+                        <li>Felipe de Oliveira Pires</li>
+                        <li>Gabriel Henrique de Camargo Bordin</li>
+                        <li>Helder Davidson Rodrigues Alvarenga</li>
+                        <li>Henrique Oliveira da Silva</li>
+                        <li>Leandro Vieira da Costa</li>
+                    </ul>
+                </div>
+                <!-- Parte 2 -->
+                <div class="menu-item">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="https://github.com/Uken49/Agro-Consult"><i class="fa-brands fa-github"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </article>
+            <!-- Marca de copyright -->
+            <article class="copy">
+                <hr>
+                <p>&copy; <span id="spn_year"></span> Todos os direitos reservados para Agro Consult</p>
+            </article>
+        </section>
+    </footer>
 </body>
 
 </html>

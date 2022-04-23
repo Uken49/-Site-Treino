@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/global.css">
-    <script src="https://kit.fontawesome.com/a9267fa494.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
     <title>Agro Consult</title>
 </head>
 
@@ -15,32 +20,58 @@
     <!-- Barra de navegação do topo -->
     <header>
         <div class="wrapper">
-            <img class="img-logo"
-                src="https://media.istockphoto.com/vectors/roundedsqr09stampsred-vector-id1159575132?k=20&m=1159575132&s=612x612&w=0&h=5rbLlspoCItgDKBJeN9HzF8AFU_MFWSzabo-MpCdkEA="
-                alt="imagem">
+            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="imagem">
 
             <nav class="header-navbar">
                 <ul class="header-nav-items">
-                    <li><i class="fa-solid fa-bell"></i></li>
-                    <li><i class="fa-solid fa-question"></i></li>
+                    <li><ion-icon name="log-out-outline"></ion-icon></li>
+                    <li><ion-icon name="help-outline"></ion-icon></li>
                 </ul>
                 <div class="header-nav-box">
-                    <span>Helder</span>
-                    <i class="fa-solid fa-angle-down"></i>
+                    <span>Fernando Brandão</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
             </nav>
         </div>
     </header>
 
     <main>
-        <aside class="a-navbar">
-            <nav class="a-nav-items">
-                <a href=""><i class="fa-solid fa-house"></i>Inicio</a>
-                <a href=""><i class="fa-solid fa-chart-pie"></i>Gráficos</a>
-            </nav>
+        <aside class="side-bar">
+            <ul>
+                <li class="list active">
+                    <a href="index.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                        <span class="title">Gráficos</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title">Ajuda</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Configuração</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
         </aside>
     </main>
-
 </body>
-
 </html>
+
+<script src="js/side-bar.js"></script>

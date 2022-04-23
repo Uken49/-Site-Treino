@@ -14,6 +14,7 @@ a {
 body {
     height: 100vh;
     width: 100%;
+    --header-height: 90px;
 }
 
 button {
@@ -45,7 +46,8 @@ input[type=number] {
 
 /* INICIO - HEADER */
 header {
-    height: 90px;
+    position: fixed;
+    height: var(--header-height);
     width: 100%;
     background-image: linear-gradient(to right, var(--cor-principal), #43c51a, var(--cor-principal));
 }
@@ -60,7 +62,7 @@ header {
 }
 
 .img-logo {
-    width: 100px;
+    height: 65px;
 }
 
 .header-navbar {
@@ -72,10 +74,13 @@ header {
 }
 
 .header-nav-items {
-    height: auto;
     display: flex;
+    font-size: 25px;
     align-items: center;
-    column-gap: 100%;
+}
+
+.header-nav-items li {
+    cursor: pointer;
 }
 
 .header-nav-box {
@@ -102,29 +107,96 @@ header {
 /* FIM - HEADER */
 
 
-/* Barra lateral */
-.a-navbar {
+/* INICIO - Barra lateral */
+.side-bar {
+    position: fixed;
+    top: var(--header-height);
+    height: calc(100% - var(--header-height));
     height: 100%;
-    width: 18%;
-    background-color: #297406;
+    width: 70px;
+    background-color: #424242;
+    box-shadow: 10px 0 0 #099c22;
+    border-left: 10px solid #424242;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
-.a-nav-items {
-    height: 100%;
+.side-bar:hover {
+    width: 200px;
+}
+
+.side-bar ul {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 40px 0 0 5px;
+}
+
+.side-bar ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    padding: 20px 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.side-bar ul li a {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
 }
 
-.a-nav-items a {
-    height: 10%;
-    width: 100%;
-    border: 1px solid #000000;
-    color: #000000;
-    font-size: 20px;
-    padding: 0 20% 0 20%;
+.side-bar ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    width: 60px;
+    text-align: center;
 }
-.a-nav-items i{
-    padding: 0 10px 0 0;
+
+.side-bar ul li a .icon ion-icon {
+    position: relative;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+.side-bar ul li a .icon .title {
+    position: relative;
+    display: block;
+    padding: 0 0 0 10px;
+    height: 60px;
+    line-height: 50px;
+}
+
+.side-bar ul li.active {
+    background-color: #099c22;
+}
+
+.side-bar ul li.active a::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #424242;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 #099c22;
+}
+
+.side-bar ul li.active a::before {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: #424242;
+    border-radius: 50%;
+    box-shadow: 15px -15px 0 #099c22;
 }

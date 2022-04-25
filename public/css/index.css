@@ -207,12 +207,12 @@ body {
     display: flex;
     margin: auto;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     height: 100%;
     width: 100%;
 }
 
 .team-pic figure {
-    margin: auto;
     font-size: large;
 }
 
@@ -227,8 +227,9 @@ body {
 .people-card {
     background-color: #ffa500;
     border-radius: 50%;
-    height: 170px;
-    width: 170px;
+    border: 3px solid var(--cor-principal);
+    height: 140px;
+    width: 140px;
 }
 
 /* FIM - SECTION 3 - Sobre Nós */

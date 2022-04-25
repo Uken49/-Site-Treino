@@ -23,7 +23,7 @@
                 <img class="img-logo" src="assets/img/logo-agroconsult.png" alt="imagem">
             </a>
 
-    
+
             <nav class="navbar">
                 <ul class="nav-items">
                     <li><a href="index.html#index">Inicio</a></li>
@@ -31,6 +31,7 @@
                     <li><a href="index.html#about">Sobre-Nós</a></li>
                     <li><a href="index.html#footer">Contato</a></li>
                     <li class="pl-3"><a href="calculadora.html">Calculadora</a></li>
+                    <li>|</li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Entrar</a></li>
                 </ul>
@@ -66,18 +67,13 @@
                         <hr>
                     </div>
 
-                    <div class="inp-container">
+                    <!-- Parte 1 do cadastro -->
+                    <div id="register_1" class="inp-container">
                         <div class="label-float" id="label_name">
                             <input id="inp_name" oninput="valName()" type="text" placeholder=" "
                                 title="Insira o nome completo">
                             <label>Nome Completo</label>
                             <span id="warning_name"></span>
-                        </div>
-
-                        <div class="label-float" oninput="valCnpj()" id="label_cnpj">
-                            <input id="inp_cnpj" type="text" placeholder=" " title="Insira o CNPJ da sua empresa">
-                            <label>CNPJ</label>
-                            <span id="warning_cnpj"></span>
                         </div>
 
                         <div class="label-float" id="label_email">
@@ -95,13 +91,43 @@
                         </div>
 
                         <div class="label-float" id="label_pass_conf">
-                            <input id="inp_pass_conf" oninput="valPass()" type="password" placeholder=" ">
+                            <input id="inp_pass_conf" oninput="valPass()" type="password" placeholder=" "
+                                title="A senha deve ser a mesma do campo anterior">
                             <label>Confirmar Senha</label>
                             <span id="warning_pass_conf"></span>
                         </div>
                     </div>
-                    <button onclick="valSubmit()" class="btn-register">ENTRAR</button>
+
+                    <!-- Parte 2 do cadastro -->
+                    <div id="register_2" class="inp-container" style="display: none;">
+                        <div class="label-float" id="label_name_corp">
+                            <input id="inp_name_corp" oninput="valNameCorp()" type="text" placeholder=" "
+                                title="Insira o nome da empresa">
+                            <label>Nome da empresa</label>
+                            <span id="warning_name_corp"></span>
+                        </div>
+
+                        <div class="label-float" oninput="valCnpj()" id="label_cnpj">
+                            <input id="inp_cnpj" type="text" placeholder=" " title="Insira o CNPJ da sua empresa"
+                                maxlength="18">
+                            <label>CNPJ</label>
+                            <span id="warning_cnpj"></span>
+                        </div>
+
+                        <input id="inp_img" onchange="valImg()" type="file" placeholder=" "
+                            title="Imagem da logo da empresa">
+                        <label>Logo da empresa</label>
+                        <span id="warning_img"></span>
+
+                    </div>
+
+                    <div>
+                        <button id="btn-prev" onclick="valPrev()" class="btn-register"
+                            style="display: none;">VOLTAR</button>
+                        <button id="btn-next" onclick="valNext()" class="btn-register">PRÓXIMO</button>
+                    </div>
                 </div>
+
             </article>
         </section>
     </main>

@@ -73,7 +73,7 @@ function valName() {
         label_name.className = 'label-float invalid'
         warning_name.innerHTML = 'Digite seu nome completo'
         return false
-    }else if (regex.test(name)) {
+    } else if (regex.test(name)) {
         warning_name.innerHTML = ''
         label_name.className = 'label-float valid'
         return true
@@ -84,9 +84,25 @@ function valName() {
     }
 }
 
+// Validando nome da empresa
+function valNameCorp() {
+    let name = document.getElementById('inp_name_corp').value
+
+    // Validando a quantidade de palavra e caracteres
+    if (name == '') {
+        label_name_corp.className = 'label-float invalid'
+        warning_name_corp.innerHTML = 'Digite o nome da empresa'
+        return false
+    } else {
+        warning_name_corp.innerHTML = ''
+        label_name_corp.className = 'label-float valid'
+        return true
+    }
+}
+
 // Validando CNPJ
 function valCnpj() {
-    var cnpj = document.getElementById('inp_cnpj').value;
+    let cnpj = document.getElementById('inp_cnpj').value;
     cnpj = cnpj.replace(/[^\d]+/g, '');
 
     if (cnpj == '') {
@@ -162,12 +178,57 @@ function valCnpj() {
     }
 }
 
-function valSubmit() {
-    if (!valName() | !valCnpj() | !valEmail() | !passCheck() | !valPass()) {
-        alert("Erro ao enviar!!")
-        return false;
+// Validando a extensão do arquivo para que seja uma imagem
+function valImg() {
+    let ext = document.getElementById('inp_img').value
+    // Pegar somente a ultima parte, afinal podem ter pastas com . no caminho
+    ext = path.split('/').pop();
+    // Se não houver extensão, retorna vazio, se houver retorna a extensão
+    ext = ext.indexOf('.') < 1 ? '' : ext.split('.').pop();
+
+    let extArr = ext.split(" ");
+    // Comparando com as extensões do array
+    let arr = ["png", "jpg", "jpeg", "jpe", "jfif"];
+
+    for (let i = 0; i < extArr.length; i++) {
+        if (arr.includes(extArr[i])) {
+            // Retorna a extenão compativel
+        }
+    }
+
+    if (condition) {
+        warning_img.innerHTML = ''
     } else {
-        alert("Dados enviados com sucesso")
-        return true;
+        warning_img.innerHTML = 'Arquivo inválido'
+    }
+}
+
+function valNext() {
+    // if (!valName() | !valEmail() | !passCheck() | !valPass()) {
+    //     return false
+    // } else {
+        document.getElementById('register_1').style.display = 'none'
+        document.getElementById('register_2').style.display = 'flex'
+        document.getElementById('btn-next').innerHTML = 'CADASTRAR'
+        document.getElementById('btn-next').setAttribute('onclick', "register()")
+        document.getElementById('btn-prev').style.display = 'inline-block'
+        // return true
+    // }
+}
+
+function valPrev() {
+    document.getElementById('register_1').style.display = 'flex'
+    document.getElementById('register_2').style.display = 'none'
+    document.getElementById('btn-next').innerHTML = 'PRÓXIMO'
+    document.getElementById('btn-next').setAttribute('onclick', "valNext()")
+    document.getElementById('btn-prev').style.display = 'none'
+}
+
+function register() {
+    if (!valCnpj() | !valNameCorp() | !valImg()) {
+        return false
+    } else {
+        alert('Cadastro realizado com sucesso')
+        return true
     }
 }

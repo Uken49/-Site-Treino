@@ -23,8 +23,8 @@ function calcular() {
     var sys_gain = (sys_gain).toLocaleString(undefined,{ minimumFractionDigits: 2 });
     
     // Imprimindo a mensagem
-    var phrase = `Olá ${corpName}, sua lavoura lucra R$${gain}, 
-    com o nosso sistema você poderá lucrar até <b>R$${sys_gain}!!</b>`
+    var phrase = `Olá ${corpName}, sua lavoura lucra R$${gain} ,
+    implementando o nosso sistema você poderá lucrar até <b>R$${sys_gain} !!</b>`
 
     document.getElementById("calc_res").innerHTML = phrase
 

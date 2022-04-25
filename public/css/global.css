@@ -81,7 +81,7 @@ input[type=number] {
 }
 
 .nav-items a {
-    font-size: 20px;
+    font-size: 17px;
     color: #ffffff;
 }
 
@@ -158,10 +158,6 @@ input[type=number] {
 }
 
 @media (max-width: 509px) {
-    .nav-items a {
-        font-size: 8px;
-    }
-
     .img-logo {
         height: 25px;
     }

@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Agro Consult</title>
 </head>
 
@@ -17,7 +18,7 @@
     <!-- Barra de navegação do topo -->
     <header>
         <div class="wrapper">
-            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="imagem">
+            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="logo da agroconsult">
 
             <nav class="header-navbar">
                 <ul class="header-nav-items">
@@ -51,13 +52,13 @@
         <aside class="side-bar">
             <ul>
                 <li class="list active">
-                    <a href="index.html">
+                    <a href="#">
                         <span class="icon"><img src="../assets/svg/home.svg"></span>
                         <span class="title">Inicio</span>
                     </a>
                 </li>
                 <li class="list">
-                    <a href="#">
+                    <a href="dashboard.html">
                         <span class="icon"><img src="../assets/svg/chart.svg"></span>
                         <span class="title">Gráficos</span>
                     </a>
@@ -84,9 +85,234 @@
         </aside>
 
         <!-- Conteúdo da página -->
+        <section class="page-content">
+            <section class="container">
+
+                <!-- A maior/menor temperatura registrada no momento -->
+                <article class="metrics controlled">
+                    <span>Menor Temperatura</span>
+                    <div class="circle">
+                        <span id="min_celsius">18&deg;</span>
+                    </div>
+                </article>
+                <article class="metrics moderate">
+                    <span>Maior Temperatura</span>
+                    <div class="circle">
+                        <span id="max_celsius">24&deg;</span>
+                    </div>
+                </article>
+
+                <!-- A maior/menor umidade registrada no momento -->
+                <article class="metrics controlled">
+                    <span>Menor Umidade</span>
+                    <div class="circle">
+                        <span id="moisture">17&percnt;</span>
+                    </div>
+                </article>
+                <article class="metrics critical">
+                    <span>Maior Umidade</span>
+                    <div class="circle">
+                        <span id="moisture">45&percnt;</span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="container">
+                <article class="fill">
+                    <span>Temperatura ideal: 24-28&deg;</span>
+                    <span>Umidade ideal: 30-40&percnt;</span>
+
+                    <div style="position: relative; height:93.5%; width:100%">
+                        <canvas id="myChart" width="1200" height="281"></canvas>
+                    </div>
+
+                </article>
+            </section>
+
+            <section class="container">
+                <article class="box">
+                    <h2>
+                        Top 10 fazendas fodas
+                    </h2>
+                    
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Local</th>
+                                <th>Área</th>
+                                <th>Temperatura</th>
+                                <th>Umidade</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 1</td>
+                                <td>13</td>
+                                <td>13</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 5</td>
+                                <td>Área 2</td>
+                                <td>52</td>
+                                <td>52</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 2</td>
+                                <td>35</td>
+                                <td>64</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 5</td>
+                                <td>20</td>
+                                <td>65</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 3</td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 5</td>
+                                <td>Área 3</td>
+                                <td>13</td>
+                                <td>13</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 5</td>
+                                <td>35</td>
+                                <td>36</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 4</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 4</td>
+                                <td>35</td>
+                                <td>335</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 2</td>
+                                <td>60</td>
+                                <td>60</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+
+                <article class="box">
+                    <h2>
+                        Top 10 fazendas fodas
+                    </h2>
+                    
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Local</th>
+                                <th>Área</th>
+                                <th>Temperatura</th>
+                                <th>Umidade</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 1</td>
+                                <td>13</td>
+                                <td>13</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 5</td>
+                                <td>Área 2</td>
+                                <td>52</td>
+                                <td>52</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 2</td>
+                                <td>35</td>
+                                <td>64</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 5</td>
+                                <td>20</td>
+                                <td>65</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 3</td>
+                                <td>12</td>
+                                <td>12</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 5</td>
+                                <td>Área 3</td>
+                                <td>13</td>
+                                <td>13</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 5</td>
+                                <td>35</td>
+                                <td>36</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 4</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td class="moderate">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 1</td>
+                                <td>Área 4</td>
+                                <td>35</td>
+                                <td>335</td>
+                                <td class="critical">Crítico</td>
+                            </tr>
+                            <tr>
+                                <td>Fazenda 3</td>
+                                <td>Área 2</td>
+                                <td>60</td>
+                                <td>60</td>
+                                <td class="controlled">Controlado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+
+            </section>
+        </section>
+
     </main>
 </body>
 
 </html>
 
 <script src="js/side-bar.js"></script>
+<script src="js/index.js"></script>

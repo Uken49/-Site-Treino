@@ -1,0 +1,80 @@
+.container {
+    height: auto;
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    background-color: wheat;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.metrics {
+    height: 150px;
+    width: 20%;
+    display: flex;
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.metrics span {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.circle {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 50%;
+}
+
+.fill {
+    height: 300px;
+    width: 100%;
+    background-color: #837a7a;
+}
+
+.fill span {
+    font-size: 16px;
+    padding: 0 20px 0 0;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 49.5%;
+    background-color: #c2c2c2;
+    overflow-y: auto;
+}
+
+.box h2 {
+    text-align: center;
+    font-size: 27px;
+}
+
+:is(.box) table, th, td, thead {
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.controlled {
+    color: #025302;
+    background-color: #06c40691;
+}
+
+.moderate {
+    color: #535202;
+    background-color: #c4c10691;
+}
+
+.critical {
+    color: #530202;
+    background-color: #c4060691;
+}

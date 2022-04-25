@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Agro Consult</title>
+</head>
+
+<body>
+    <!-- Barra de navegação do topo -->
+    <header>
+        <div class="wrapper">
+            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="logo da agroconsult">
+
+            <nav class="header-navbar">
+                <ul class="header-nav-items">
+                    <li><img src="../assets/svg/notification.svg"></li>
+                    <li><img src="../assets/svg/help.svg"></li>
+                </ul>
+                <div class="header-nav-box">
+                    <span>Fernando Brandão</span>
+                    <img src="../assets/svg/down-arrow.svg">
+                    <ul>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/user-perfil.svg"></span>
+                            <span class="title">Meu Perfil</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/settings.svg"></span>
+                            <span class="title">Configuração</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/logout.svg"></span>
+                            <span class="title">Sair</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Barra de navegação do lado direito - menu -->
+        <aside class="side-bar">
+            <ul>
+                <li class="list">
+                    <a href="index.html">
+                        <span class="icon"><img src="../assets/svg/home.svg"></span>
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/chart.svg"></span>
+                        <span class="title">Gráficos</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/help.svg"></span>
+                        <span class="title">Ajuda</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
+                        <span class="title">Usuários online</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../index.html">
+                        <span class="icon"><img src="../assets/svg/logout.svg"></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo da página -->
+        <section class="page-content">
+            <section class="container">
+                <!-- A maior/menor temperatura registrada no momento -->
+                <article class="metrics controlled">
+                    <span>Menor Temperatura</span>
+                    <div class="circle">
+                        <span id="min_celsius">18&deg;</span>
+                    </div>
+                </article>
+                <article class="metrics moderate">
+                    <span>Maior Temperatura</span>
+                    <div class="circle">
+                        <span id="max_celsius">24&deg;</span>
+                    </div>
+                </article>
+                
+                <!-- A maior/menor umidade registrada no momento -->
+                <article class="metrics controlled">
+                    <span>Menor Umidade</span>
+                    <div class="circle">
+                        <span id="moisture">17&percnt;</span>
+                    </div>
+                </article>
+                <article class="metrics critical">
+                    <span>Maior Umidade</span>
+                    <div class="circle">
+                        <span id="moisture">45&percnt;</span>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Gráfico de <decidir depois> -->
+            <section class="container">
+                <article class="fill">
+                    <!-- Legenda -->
+                    <span>Temperatura ideal: 24-28&deg;</span>
+                    <span>Umidade ideal: 30-40&percnt;</span>
+            
+                    <div style="position: relative; height:93.5%; width:100%">
+                        <canvas id="chart_1" width="1200" height="281"></canvas>
+                    </div>
+            
+                </article>
+            </section>
+
+            <section class="container">
+                <article class="box">
+                    <div style="position: relative; height:93.5%; width:100%">
+                        <canvas id="chart_2" width="100%" height="40"></canvas>
+                    </div>
+                </article>
+                
+                <article class="box">
+                    <div style="position: relative; height:93.5%; width:100%">
+                        <canvas id="chart_3" width="100%" height="40"></canvas>
+                    </div>
+                </article>
+            </section>
+        </section>
+
+    </main>
+</body>
+
+</html>
+
+<script src="js/side-bar.js"></script>
+<script src="js/dashboard.js"></script>

@@ -47,6 +47,10 @@ main {
     background-color: #4b740000;
 }
 
+.content-welcome div{
+    inline-size: 95%;
+}
+
 .content-welcome h2 {
     font-size: 50px;
     -webkit-text-stroke-width: 1px;

@@ -14,7 +14,7 @@
     <title>Agro Consult</title>
 </head>
 
-<body>
+<body onload="validarSessao(), atualizacaoPeriodica()">
     <!-- Barra de navegação do topo -->
     <header>
         <div class="wrapper">
@@ -26,7 +26,7 @@
                     <li><img src="../assets/svg/help.svg"></li>
                 </ul>
                 <div class="header-nav-box">
-                    <span>Fernando Brandão</span>
+                    <span id="user_name"></span>
                     <img src="../assets/svg/down-arrow.svg">
                     <ul>
                         <li>
@@ -39,7 +39,7 @@
                         </li>
                         <li>
                             <span class="icon"><img src="../assets/svg/logout.svg"></span>
-                            <span class="title">Sair</span>
+                            <span class="title" onclick="limparSessao()">Sair</span>
                         </li>
                     </ul>
                 </div>
@@ -321,5 +321,6 @@
 
 </html>
 
-<script src="js/side-bar.js"></script>
-<script src="js/index.js"></script>
+<script src="js/side-bar.js"></script> <!-- Barra de navegação lateral -->
+<script src="js/index.js"></script> <!-- Gráficos -->
+<script src="js/global.js"></script> <!-- Sessões -->

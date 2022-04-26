@@ -1,3 +1,25 @@
+// Sessões
+function validarSessao() {
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+
+    var user_name = document.getElementById("user_name");
+
+    if (email != null && nome != null) {
+        if (user_name != undefined) {
+            user_name.innerHTML = nome;
+        }
+
+    } else {
+        window.location = "../login.html";
+    }
+}
+
+function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+}
+
 // Primeiro gráfico - Linha : Decidir o que terá
 const chart_1 = document.getElementById('chart_1').getContext('2d');
 const chart1 = new Chart(chart_1, {

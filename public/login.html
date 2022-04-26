@@ -22,7 +22,7 @@
             <a href="index.html">
                 <img class="img-logo" src="assets/img/logo-agroconsult.png" alt="imagem">
             </a>
-    
+
             <nav class="navbar">
                 <ul class="nav-items">
                     <li><a href="index.html#index">Inicio</a></li>
@@ -67,14 +67,16 @@
                     </div>
 
                     <div class="inp-container">
-                        <div class="label-float">
-                            <input id="inp_email" type="email" placeholder=" ">
+                        <div class="label-float" id="label_email">
+                            <input id="inp_email" oninput="valEmail()" type="email" placeholder=" ">
                             <label>Email</label>
+                            <span id="warning_email"></span>
                         </div>
-                        
-                        <div class="label-float">
-                            <input id="inp_pass" type="password" placeholder=" " required>
+
+                        <div class="label-float" id="label_pass">
+                            <input id="inp_pass" oninput="passCheck()" type="password" placeholder=" " required>
                             <label>Senha</label>
+                            <span id="warning_pass"></span>
                             <i id="i_eye" onclick="seePass()" class="fa-solid fa-eye-slash"></i>
                         </div>
 
@@ -86,7 +88,7 @@
                             <a href="#">Esqueci minha senha</a>
                         </span>
                     </div>
-                    <button class="btn-login">ENTRAR</button>
+                    <button class="btn-login" onclick="loginVal()">ENTRAR</button>
                 </div>
             </article>
         </section>

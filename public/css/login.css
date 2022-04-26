@@ -169,7 +169,7 @@ main {
 }
 
 .label-float input:focus {
-    border-bottom: 2px solid var(--cor-principal);
+    border-bottom: 2px solid #0091aa;
 }
 
 .label-float input::placeholder {
@@ -192,7 +192,26 @@ main {
 .label-float input:not(:placeholder-shown)+label {
     font-size: 14px;
     margin-top: 0;
-    color: var(--cor-principal);
+    color: #0091aa;
+}
+
+/* Classes usada na validação */
+.valid :is(input, input:focus, label, span) {
+    --color-validation: #008000;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
+}
+
+.missing :is(input, input:focus, label, span) {
+    --color-validation: #b9a016;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
+}
+
+.invalid :is(input, input:focus, label, span) {
+    --color-validation: #ff0000;
+    color: var(--color-validation) !important;
+    border-bottom-color: var(--color-validation);
 }
 
 /* Responsividade */

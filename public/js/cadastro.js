@@ -45,7 +45,7 @@ function valPass() {
 function valEmail() {
     let email = document.getElementById('inp_email').value
     let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
-    // Essa expressão não garante a veracidade 100% de um email
+    // Essa expressão não garante a veracidade 100% de um email, para ser 100% precisa mandar confirmação por email
 
     // Validando email se os caracteres do email é válido
     if (email == '') {
@@ -180,40 +180,30 @@ function valCnpj() {
 
 // Validando a extensão do arquivo para que seja uma imagem
 function valImg() {
-    let ext = document.getElementById('inp_img').value
-    // Pegar somente a ultima parte, afinal podem ter pastas com . no caminho
-    ext = path.split('/').pop();
-    // Se não houver extensão, retorna vazio, se houver retorna a extensão
-    ext = ext.indexOf('.') < 1 ? '' : ext.split('.').pop();
+    // Um dia essa função vai funcionar, e nesse dia será o meu reinado
+    // let img = document.getElementById('inp_img').value
+    // let ext = algum jeito para pegar a extensão
+    // let arrayExt = ["png", "jpg", "jpeg", "jpe", "jfif"];
 
-    let extArr = ext.split(" ");
-    // Comparando com as extensões do array
-    let arr = ["png", "jpg", "jpeg", "jpe", "jfif"];
-
-    for (let i = 0; i < extArr.length; i++) {
-        if (arr.includes(extArr[i])) {
-            // Retorna a extenão compativel
-        }
-    }
-
-    if (condition) {
-        warning_img.innerHTML = ''
-    } else {
-        warning_img.innerHTML = 'Arquivo inválido'
-    }
+    // if (arrayExt.indexOf(ext)) {
+    //     return true
+    // }else{
+    //     return false
+    // }
+    return true
 }
 
 function valNext() {
-    // if (!valName() | !valEmail() | !passCheck() | !valPass()) {
-    //     return false
-    // } else {
+    if (!valName() | !valEmail() | !passCheck() | !valPass()) {
+        return false
+    } else {
         document.getElementById('register_1').style.display = 'none'
         document.getElementById('register_2').style.display = 'flex'
         document.getElementById('btn-next').innerHTML = 'CADASTRAR'
-        document.getElementById('btn-next').setAttribute('onclick', "register()")
+        document.getElementById('btn-next').setAttribute('onclick', "registerCheck()")
         document.getElementById('btn-prev').style.display = 'inline-block'
-        // return true
-    // }
+        return true
+    }
 }
 
 function valPrev() {
@@ -224,11 +214,51 @@ function valPrev() {
     document.getElementById('btn-prev').style.display = 'none'
 }
 
-function register() {
+function registerCheck() {
     if (!valCnpj() | !valNameCorp() | !valImg()) {
         return false
     } else {
-        alert('Cadastro realizado com sucesso')
+        register()
         return true
     }
+}
+
+// Enviando os dados para o banco
+
+function register() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = inp_name.value;
+    var emailVar = inp_email.value;
+    var senhaVar = inp_pass.value;
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            window.location = "../login.html";
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
 }

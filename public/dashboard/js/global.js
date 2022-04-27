@@ -1,5 +1,4 @@
-// Pegando as informações do usúario
-
+// Pegando os dados do sensor
 function atualizacaoPeriodica() {
     obterdados(1);
     obterdados(2);

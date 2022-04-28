@@ -95,6 +95,10 @@ function login() {
 
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
+            alert('Email ou senha inválido')
+            
+            label_email.className = 'label-float missing'
+            label_pass.className = 'label-float missing'
 
             resposta.text().then(texto => {
                 console.error(texto);

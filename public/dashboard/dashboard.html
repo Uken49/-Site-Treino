@@ -14,7 +14,7 @@
     <title>Agro Consult - Gráficos</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <!-- Barra de navegação do topo -->
     <header>
         <div class="wrapper">
@@ -39,7 +39,7 @@
                         </li>
                         <li>
                             <span class="icon"><img src="../assets/svg/logout.svg"></span>
-                            <span class="title">Sair</span>
+                            <span class="title" onclick="limparSessao()">Sair</span>
                         </li>
                     </ul>
                 </div>
@@ -71,14 +71,14 @@
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
-                        <span class="title">Usuários online</span>
+                        <span class="icon"><img src="../assets/svg/account-group.svg"></span>
+                        <span class="title">Cadastrar usuários</span>
                     </a>
                 </li>
                 <li class="list">
                     <a href="../index.html">
-                        <span class="icon"><img src="../assets/svg/logout.svg"></span>
-                        <span class="title" onclick="limparSessao()">Sair</span>
+                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
+                        <span class="title">Usuários online</span>
                     </a>
                 </li>
             </ul>
@@ -91,13 +91,13 @@
                 <article class="metrics controlled">
                     <span>Menor Temperatura</span>
                     <div class="circle">
-                        <span id="min_celsius">18&deg;</span>
+                        <span id="min_celsius">24&deg;</span>
                     </div>
                 </article>
                 <article class="metrics moderate">
                     <span>Maior Temperatura</span>
                     <div class="circle">
-                        <span id="max_celsius">24&deg;</span>
+                        <span id="max_celsius">31&deg;</span>
                     </div>
                 </article>
                 
@@ -120,13 +120,12 @@
             <section class="container">
                 <article class="fill">
                     <!-- Legenda -->
-                    <span>Temperatura ideal: 24-28&deg;</span>
-                    <span>Umidade ideal: 30-40&percnt;</span>
+                    <span>Temperatura ideal: 24-30&deg;</span>
+                    <span>Umidade ideal: 16-18&percnt;</span>
             
                     <div style="position: relative; height:93.5%; width:100%">
                         <canvas id="chart_1" width="1200" height="281"></canvas>
                     </div>
-            
                 </article>
             </section>
 

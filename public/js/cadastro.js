@@ -245,14 +245,18 @@ function register() {
             // Agora vá para o arquivo routes/usuario.js
             nomeServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
         })
     }).then(function (resposta) {
 
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            window.location = "../login.html";
+            // Enviando o usuário para área de login
+            sessionStorage.EMAIL_USUARIO = emailVar;
+            sessionStorage.NOME_USUARIO = nomeVar;
+            // Colocar a session 
+            window.location = "../dashboard/index.html";
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }

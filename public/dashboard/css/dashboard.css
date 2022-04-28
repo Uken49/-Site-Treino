@@ -51,7 +51,7 @@
 .fill {
     height: 300px;
     width: 100%;
-    background-color: #837a7a;
+    background-color: #e5d0d0;
 }
 
 .fill span {
@@ -64,7 +64,7 @@
     flex-direction: column;
     justify-content: center;
     width: 49.5%;
-    background-color: #c2c2c2;
+    background-color: #e5d0d0;
     overflow-y: auto;
 }
 

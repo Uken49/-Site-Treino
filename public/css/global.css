@@ -36,6 +36,11 @@ li {
     list-style: none;
 }
 
+.pipe{
+    color: #0c3a00;
+    font-size: 17px;
+}
+
 /* Tirando a seta do input:number no Chrome, Safari, Edge, Opera*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -128,7 +133,7 @@ input[type=number] {
     }
 
     .nav-items a {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .img-logo {
@@ -147,19 +152,37 @@ input[type=number] {
     }
 }
 
+@media (max-width: 633px) {
+    .nav-items a {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 617px) {
     .nav-items a {
-        font-size: 10px;
+        font-size: 11px;
     }
+}
 
+@media (max-width: 571px) {
+    .nav-items a{
+        font-size: 10px  ;
+    }
     .img-logo {
         height: 40px;
     }
 }
 
-@media (max-width: 509px) {
+@media (max-width: 526px) {
+    .wrapper .nav-items {
+        gap: 5px;
+    }
+
+    .nav-items a{
+        font-size: 10px  ;
+    }
     .img-logo {
-        height: 25px;
+        height: 37px;
     }
 }
 

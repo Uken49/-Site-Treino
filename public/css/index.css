@@ -273,10 +273,10 @@ body {
 }
 
 .social-icons {
-    width: 31%;
-    margin: auto;
-    gap: 5px;
+    width: auto;
+    gap: 15px;
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
 }
 
@@ -465,8 +465,6 @@ body {
     }
 
     .social-icons {
-        width: auto;
-        gap: 5px;
         display: block;
     }
 

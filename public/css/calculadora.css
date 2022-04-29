@@ -301,10 +301,10 @@ figure img {
 }
 
 .social-icons {
-    width: 31%;
-    margin: auto;
-    gap: 5px;
+    width: auto;
+    gap: 15px;
     display: flex;
+    justify-content: center;
     flex-flow: row wrap;
 }
 
@@ -319,6 +319,8 @@ figure img {
     width: 70%;
     text-align: center;
 }
+
+/* FIM - FOOTER - Contato */
 
 /* FIM - FOOTER - Contato */
 

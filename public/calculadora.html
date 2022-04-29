@@ -30,7 +30,7 @@
                     <li><a href="index.html#about">Sobre-Nós</a></li>
                     <li><a href="index.html#footer">Contato</a></li>
                     <li class="pl-3"><a href="calculadora.html">Calculadora</a></li>
-                    <li>|</li>
+                    <li class="pipe">|</li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Entrar</a></li>
                 </ul>
@@ -170,7 +170,7 @@
                     </ul>
                 </div>
 
-                <div class="inp-container">
+                <form class="inp-container">
                     <div class="label-float">
                         <input id="inp_name" type="text" placeholder=" ">
                         <label>Nome da empresa</label>
@@ -183,13 +183,12 @@
                         <input id="inp_sack" type="number" placeholder=" ">
                         <label>Quantidade de sacas por hectare</label>
                     </div>
-                    <button onclick="calcular()" class="btn-calculator">CALCULAR</button>
-                </div>
+                    <button type="button" onclick="calcular()" class="btn-calculator">CALCULAR</button>
+                </form>
 
                 <!-- Modal da calculadora -->
                 <div id="calc_modal">
                     <div class="content-modal">
-
                         <i class="fa-regular fa-circle-xmark close"></i>
                         <div class="info-modal">
                             <h2>Amplie os seus ganhos!!</h2>

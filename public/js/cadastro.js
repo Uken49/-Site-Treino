@@ -1,6 +1,6 @@
 // Checando se a senha é válida
 function passCheck() {
-    let pass = document.getElementById('inp_pass').value
+    let pass = document.getElementById('inp_pass').trim().value
     let regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
 
     // Verificando se a senha é forte com regex
@@ -21,8 +21,8 @@ function passCheck() {
 
 // Checando se as duas senhas são iguais
 function valPass() {
-    let pass = document.getElementById('inp_pass').value
-    let passConf = document.getElementById('inp_pass_conf').value
+    let pass = document.getElementById('inp_pass').trim().value
+    let passConf = document.getElementById('inp_pass_conf').trim().value
 
     if (passConf.length >= 6) {
         if (pass == passConf) {
@@ -43,7 +43,7 @@ function valPass() {
 
 // Validando email
 function valEmail() {
-    let email = document.getElementById('inp_email').value
+    let email = document.getElementById('inp_email').trim().value
     let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
     // Essa expressão não garante a veracidade 100% de um email, para ser 100% precisa mandar confirmação por email
 
@@ -65,7 +65,7 @@ function valEmail() {
 
 // Validando nome
 function valName() {
-    let name = document.getElementById('inp_name').value
+    let name = document.getElementById('inp_name').trim().value
     let regex = /^[a-z].* {1,}[a-z]{1,}/gi
 
     // Validando a quantidade de palavra e caracteres
@@ -86,7 +86,7 @@ function valName() {
 
 // Validando nome da empresa
 function valNameCorp() {
-    let name = document.getElementById('inp_name_corp').value
+    let name = document.getElementById('inp_name_corp').trim().value
 
     // Validando a quantidade de palavra e caracteres
     if (name == '') {
@@ -230,9 +230,9 @@ function register() {
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = inp_name.value;
-    var emailVar = inp_email.value;
-    var senhaVar = inp_pass.value;
+    let nomeVar = inp_name.trim().value;
+    let emailVar = inp_email.trim().value;
+    let senhaVar = inp_pass.trim().value;
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

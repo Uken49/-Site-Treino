@@ -5,7 +5,7 @@ const actYear = actDate.getFullYear();
 document.getElementById("spn_year").innerHTML = actYear
 
 function calcular() {
-    var corpName = document.getElementById("inp_name").value // Nome da empresa
+    var corpName = document.getElementById("inp_name").trim().value // Nome da empresa
     var farm = document.getElementById("inp_farm").value // Tamanho da lavoura
     var sack = document.getElementById("inp_sack").value // Quantidade de saca por hectare
     var modal = document.getElementById("calc_modal");

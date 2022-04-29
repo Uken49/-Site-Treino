@@ -14,7 +14,7 @@ function seePass() {
 
 // Checando se senha é válida
 function passCheck() {
-    let pass = document.getElementById('inp_pass').value
+    let pass = document.getElementById('inp_pass').trim().value
     let regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
 
     // Verificando se a senha é forte com regex
@@ -35,7 +35,7 @@ function passCheck() {
 
 // Validando email
 function valEmail() {
-    let email = document.getElementById('inp_email').value
+    let email = document.getElementById('inp_email').trim().value
     let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
     // Essa expressão não garante a veracidade 100% de um email, para ser 100% precisa mandar confirmação por email
 
@@ -57,8 +57,8 @@ function valEmail() {
 
 // Validando a entrada do usuário
 function login() {
-    let emailVar = document.getElementById('inp_email').value
-    let senhaVar = document.getElementById('inp_pass').value
+    let emailVar = document.getElementById('inp_email').trim().value
+    let senhaVar = document.getElementById('inp_pass').trim().value
 
     if (!valEmail() | !passCheck()) {
         return false

@@ -23,7 +23,6 @@
                 <img class="img-logo" src="assets/img/logo-agroconsult.png" alt="imagem">
             </a>
 
-
             <nav class="navbar">
                 <ul class="nav-items">
                     <li><a href="index.html#index">Inicio</a></li>
@@ -31,7 +30,7 @@
                     <li><a href="index.html#about">Sobre-Nós</a></li>
                     <li><a href="index.html#footer">Contato</a></li>
                     <li class="pl-3"><a href="calculadora.html">Calculadora</a></li>
-                    <li>|</li>
+                    <li class="pipe">|</li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Entrar</a></li>
                 </ul>
@@ -61,7 +60,7 @@
 
             <!-- Lado direito do site com o formulário -->
             <article class="content-register">
-                <div class="register-container">
+                <form class="register-container">
                     <div class="title">
                         <h1>Cadastrar</h1>
                         <hr>
@@ -108,8 +107,8 @@
                         </div>
 
                         <div class="label-float" id="label_cnpj">
-                            <input id="inp_cnpj" type="text"  oninput="valCnpj()"  placeholder=" " title="Insira o CNPJ da sua empresa"
-                                maxlength="18">
+                            <input id="inp_cnpj" type="text" oninput="valCnpj()" placeholder=" "
+                                title="Insira o CNPJ da sua empresa" maxlength="18">
                             <label>CNPJ</label>
                             <span id="warning_cnpj"></span>
                         </div>
@@ -118,16 +117,14 @@
                             title="Imagem da logo da empresa">
                         <label>Logo da empresa</label>
                         <span id="warning_img"></span>
-
                     </div>
 
                     <div>
-                        <button id="btn-prev" onclick="valPrev()" class="btn-register"
+                        <button type="button" id="btn-prev" onclick="valPrev()" class="btn-register"
                             style="display: none;">VOLTAR</button>
-                        <button id="btn-next" onclick="valNext()" class="btn-register">PRÓXIMO</button>
+                        <button type="button" id="btn-next" onclick="valNext()" class="btn-register">PRÓXIMO</button>
                     </div>
-                </div>
-
+                </form>
             </article>
         </section>
     </main>

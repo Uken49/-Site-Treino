@@ -5,11 +5,15 @@ const actYear = actDate.getFullYear();
 document.getElementById("spn_year").innerHTML = actYear
 
 function calcular() {
-    var corpName = document.getElementById("inp_name").trim().value // Nome da empresa
+    var corpName = document.getElementById("inp_name").value // Nome da empresa
     var farm = document.getElementById("inp_farm").value // Tamanho da lavoura
     var sack = document.getElementById("inp_sack").value // Quantidade de saca por hectare
     var modal = document.getElementById("calc_modal");
     var span = document.getElementsByClassName("close")[0];
+
+    if (corpName == '' ||farm == '' || sack== '') {
+        return false
+    }
 
     // Lucro do cliente
     var harvest = sack * 87.87
@@ -22,8 +26,8 @@ function calcular() {
     var gain = (gain).toLocaleString(undefined,{ minimumFractionDigits: 2 });
     var sys_gain = (sys_gain).toLocaleString(undefined,{ minimumFractionDigits: 2 });
     
-    // Imprimindo a mensagem
-    var phrase = `Olá ${corpName}, sua lavoura lucra R$${gain} ,
+    // Imprimindo a mensagem no modal
+    var phrase = `Olá ${corpName.trim()}, sua lavoura lucra R$${gain} ,
     implementando o nosso sistema você poderá lucrar até <b>R$${sys_gain} !!</b>`
 
     document.getElementById("calc_res").innerHTML = phrase

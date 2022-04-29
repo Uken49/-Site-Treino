@@ -1,6 +1,6 @@
 // Checando se a senha é válida
 function passCheck() {
-    let pass = document.getElementById('inp_pass').trim().value
+    let pass = document.getElementById('inp_pass').value
     let regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
 
     // Verificando se a senha é forte com regex
@@ -8,7 +8,9 @@ function passCheck() {
         warning_pass.innerHTML = 'Digite uma senha'
         label_pass.className = 'label-float invalid'
         return false
-    } else if (regex.test(pass)) {
+    }
+
+    if (regex.test(pass)) {
         warning_pass.innerHTML = ''
         label_pass.className = 'label-float valid'
         return true
@@ -21,8 +23,8 @@ function passCheck() {
 
 // Checando se as duas senhas são iguais
 function valPass() {
-    let pass = document.getElementById('inp_pass').trim().value
-    let passConf = document.getElementById('inp_pass_conf').trim().value
+    let pass = document.getElementById('inp_pass').value
+    let passConf = document.getElementById('inp_pass_conf').value
 
     if (passConf.length >= 6) {
         if (pass == passConf) {
@@ -43,7 +45,7 @@ function valPass() {
 
 // Validando email
 function valEmail() {
-    let email = document.getElementById('inp_email').trim().value
+    let email = document.getElementById('inp_email').value
     let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
     // Essa expressão não garante a veracidade 100% de um email, para ser 100% precisa mandar confirmação por email
 
@@ -52,7 +54,9 @@ function valEmail() {
         label_email.className = 'label-float invalid'
         warning_email.innerHTML = 'Digite um email válido'
         return false
-    } else if (regex.test(email)) {
+    }
+
+    if (regex.test(email)) {
         warning_email.innerHTML = ''
         label_email.className = 'label-float valid'
         return true
@@ -65,7 +69,7 @@ function valEmail() {
 
 // Validando nome
 function valName() {
-    let name = document.getElementById('inp_name').trim().value
+    let name = document.getElementById('inp_name').value
     let regex = /^[a-z].* {1,}[a-z]{1,}/gi
 
     // Validando a quantidade de palavra e caracteres
@@ -86,18 +90,18 @@ function valName() {
 
 // Validando nome da empresa
 function valNameCorp() {
-    let name = document.getElementById('inp_name_corp').trim().value
+    let name = document.getElementById('inp_name_corp').value
 
     // Validando a quantidade de palavra e caracteres
     if (name == '') {
         label_name_corp.className = 'label-float invalid'
         warning_name_corp.innerHTML = 'Digite o nome da empresa'
         return false
-    } else {
-        warning_name_corp.innerHTML = ''
-        label_name_corp.className = 'label-float valid'
-        return true
     }
+
+    warning_name_corp.innerHTML = ''
+    label_name_corp.className = 'label-float valid'
+    return true
 }
 
 // Validando CNPJ
@@ -129,7 +133,7 @@ function valCnpj() {
         cnpj == "99999999999999") {
 
         label_cnpj.className = 'label-float invalid'
-        warning_cnpj.innerHTML = 'Digite um CNPJ válido'
+        warning_cnpj.innerHTML = 'CNPJ inválido'
         return false;
     }
 
@@ -149,7 +153,7 @@ function valCnpj() {
 
     if (resultado != digitos.charAt(0)) {
         label_cnpj.className = 'label-float invalid'
-        warning_cnpj.innerHTML = 'Digite um CNPJ válido'
+        warning_cnpj.innerHTML = 'CNPJ inválido'
         return false;
     }
 
@@ -196,14 +200,14 @@ function valImg() {
 function valNext() {
     if (!valName() | !valEmail() | !passCheck() | !valPass()) {
         return false
-    } else {
-        document.getElementById('register_1').style.display = 'none'
-        document.getElementById('register_2').style.display = 'flex'
-        document.getElementById('btn-next').innerHTML = 'CADASTRAR'
-        document.getElementById('btn-next').setAttribute('onclick', "registerCheck()")
-        document.getElementById('btn-prev').style.display = 'inline-block'
-        return true
     }
+
+    document.getElementById('register_1').style.display = 'none'
+    document.getElementById('register_2').style.display = 'flex'
+    document.getElementById('btn-next').innerHTML = 'CADASTRAR'
+    document.getElementById('btn-next').setAttribute('onclick', "registerCheck()")
+    document.getElementById('btn-prev').style.display = 'inline-block'
+    return true
 }
 
 function valPrev() {
@@ -217,10 +221,10 @@ function valPrev() {
 function registerCheck() {
     if (!valCnpj() | !valNameCorp() | !valImg()) {
         return false
-    } else {
-        register()
-        return true
     }
+
+    register()
+    return true
 }
 
 // Enviando os dados para o banco
@@ -230,9 +234,9 @@ function register() {
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    let nomeVar = inp_name.trim().value;
-    let emailVar = inp_email.trim().value;
-    let senhaVar = inp_pass.trim().value;
+    var nomeVar = inp_name.value;
+    var emailVar = inp_email.value;
+    var senhaVar = inp_pass.value;
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -252,17 +256,54 @@ function register() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            // Enviando o usuário para área de login
-            sessionStorage.EMAIL_USUARIO = emailVar;
-            sessionStorage.NOME_USUARIO = nomeVar;
-            // Colocar a session 
-            window.location = "../dashboard/index.html";
+            // Logando o usuário e mandando para o dashboard/index
+            login()
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     });
+
+    return false;
+}
+function login() {
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO login()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                window.location = "dashboard/index.html";
+            });
+
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 
     return false;
 }

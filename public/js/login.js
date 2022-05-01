@@ -57,15 +57,15 @@ function valEmail() {
 
 // Validando a entrada do usuário
 function login() {
-    let emailVar = document.getElementById('inp_email').value
-    let senhaVar = document.getElementById('inp_pass').value
+    let email = document.getElementById('inp_email').value
+    let pass = document.getElementById('inp_pass').value
 
     if (!valEmail() | !passCheck()) {
         return false
     }
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
+    console.log("FORM LOGIN: ", email);
+    console.log("FORM SENHA: ", pass);
 
     fetch("/usuarios/autenticar", {
         method: "POST",
@@ -73,8 +73,8 @@ function login() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar
+            emailServer: email,
+            passServer: pass
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO login()!")
@@ -87,7 +87,7 @@ function login() {
                 console.log(JSON.stringify(json));
 
                 sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.NOME_USUARIO = json.name;
                 sessionStorage.ID_USUARIO = json.id;
 
                 window.location = "dashboard/index.html";

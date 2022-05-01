@@ -1,0 +1,12 @@
+.container {
+    height: auto;
+    padding: 20px 0;
+    width: 100%;
+    background-color: wheat;
+}
+
+.fill {
+    height: 300px;
+    width: 100%;
+    background-color: #e5d0d0;
+}

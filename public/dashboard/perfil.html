@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <title>Agro Consult - Meu Perfil</title>
+</head>
+
+<body onload="validarSessao()">
+    <!-- Barra de navegação do topo -->
+    <header>
+        <div class="wrapper">
+            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="logo da agroconsult">
+
+            <nav class="header-navbar">
+                <ul class="header-nav-items">
+                    <li><img src="../assets/svg/notification.svg"></li>
+                    <li><img src="../assets/svg/help.svg"></li>
+                </ul>
+                <div class="header-nav-box">
+                    <span id="user_name"></span>
+                    <img src="../assets/svg/down-arrow.svg">
+                    <ul>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/user-perfil.svg"></span>
+                            <span class="title">Meu Perfil</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/settings.svg"></span>
+                            <span class="title">Configuração</span>
+                        </li>
+                        <li>
+                            <span class="icon"><img src="../assets/svg/logout.svg"></span>
+                            <span class="title" onclick="limparSessao()">Sair</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Barra de navegação do lado direito - menu -->
+        <aside class="side-bar">
+            <ul>
+                <li class="list">
+                    <a href="index.html">
+                        <span class="icon"><img src="../assets/svg/home.svg"></span>
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/chart.svg"></span>
+                        <span class="title">Gráficos</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/help.svg"></span>
+                        <span class="title">Ajuda</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><img src="../assets/svg/account-group.svg"></span>
+                        <span class="title">Cadastrar usuários</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../#">
+                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
+                        <span class="title">Usuários online</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo da página -->
+        <section class="page-content">
+            <section class="container">
+                <span>Informações gerais</span>
+                <div class="fill">
+                    <input type="text" placeholder="" id="inp_nome">
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
+
+<script src="js/side-bar.js"></script> <!-- Barra de navegação lateral -->
+<!-- <script src="js/perfil.js"></script> -->
+<!-- Gráficos e sessões -->

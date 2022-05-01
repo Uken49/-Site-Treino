@@ -230,13 +230,14 @@ function registerCheck() {
 // Enviando os dados para o banco
 
 function register() {
-    // aguardar();
-
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = inp_name.value;
-    var emailVar = inp_email.value;
-    var senhaVar = inp_pass.value;
+    var nameUser = inp_name.value;
+    var nameCorp = inp_name_corp.value;
+    var cnpj = inp_cnpj.value;
+    var email = inp_email.value;
+    var pass = inp_pass.value;
+    // var logo = inp_logo.value;
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -247,9 +248,12 @@ function register() {
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
+            nameServer: nameUser,
+            nameCorpServer: nameCorp,
+            emailServer: email,
+            cnpjServer: cnpj,
+            passServer: pass,
+            // logoServer: logo,
         })
     }).then(function (resposta) {
 
@@ -257,53 +261,17 @@ function register() {
 
         if (resposta.ok) {
             // Logando o usuário e mandando para o dashboard/index
-            login()
+
+            sessionStorage.EMAIL_USUARIO = email;
+            sessionStorage.NOME_USUARIO = nameUser;
+
+            window.location = "dashboard/index.html";
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     });
-
-    return false;
-}
-function login() {
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            emailServer: emailVar,
-            senhaServer: senhaVar
-        })
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO login()!")
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
-
-                window.location = "dashboard/index.html";
-            });
-
-        } else {
-            console.log("Houve um erro ao tentar realizar o login!");
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
 
     return false;
 }

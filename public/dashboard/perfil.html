@@ -36,9 +36,9 @@
                             <span class="icon"><img src="../assets/svg/settings.svg"></span>
                             <span class="title">Configuração</span>
                         </li>
-                        <li>
+                        <li onclick="limparSessao()">
                             <span class="icon"><img src="../assets/svg/logout.svg"></span>
-                            <span class="title" onclick="limparSessao()">Sair</span>
+                            <span class="title">Sair</span>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +56,7 @@
                         <span class="title">Inicio</span>
                     </a>
                 </li>
-                <li class="list active">
+                <li class="list">
                     <a href="#">
                         <span class="icon"><img src="../assets/svg/chart.svg"></span>
                         <span class="title">Gráficos</span>
@@ -85,10 +85,50 @@
 
         <!-- Conteúdo da página -->
         <section class="page-content">
+            <h1>Perfil</h1>
             <section class="container">
-                <span>Informações gerais</span>
-                <div class="fill">
-                    <input type="text" placeholder="" id="inp_nome">
+                <div class="user_info">
+                    <span>Informações gerais</span>
+                    <!-- Formulário para atualizar os dados -->
+                    <form>
+                        <div class="col">
+                            <label for="inp_name">Nome completo</label>
+                            <input id="inp_nome" class="update_input" type="text" placeholder="Nome de exibição para outros colegas">
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_email">Email</label>
+                            <input id="inp_email" class="update_input" type="email" placeholder="Email para login e notificações">
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_position">Cargo</label>
+                            <input id="inp_position" class="update_input" type="text" readonly>
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_name_corp">Nome da empresa</label>
+                            <input id="inp_nome_corp" class="update_input" type="text" placeholder="">
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_cnpj">CNPJ</label>
+                            <input id="inp_cnpj" class="update_input" type="number" placeholder="">
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_pass">Senha</label>
+                            <input id="inp_pass" class="update_input" type="password" placeholder="">
+                        </div>
+
+                        <div class="col">
+                            <label for="inp_pass_conf">Confirmar Senha</label>
+                            <input id="inp_pass_conf" class="update_input" type="password" placeholder="">
+                        </div>
+                    </form>
+                </div>
+                <div class="test">
+                    
                 </div>
             </section>
         </section>
@@ -98,5 +138,8 @@
 </html>
 
 <script src="js/side-bar.js"></script> <!-- Barra de navegação lateral -->
-<!-- <script src="js/perfil.js"></script> -->
+<script src="js/perfil.js"></script>
 <!-- Gráficos e sessões -->
+<!-- 
+    inspiração: https://github.com/topics/appseed-sample
+ -->

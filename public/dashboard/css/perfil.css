@@ -1,12 +1,45 @@
 .container {
     height: auto;
     padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    background-color: wheat;
 }
 
-.fill {
+.user_info {
     height: 300px;
-    width: 100%;
+    width: 50%;
+    border-radius: 7px;
     background-color: #e5d0d0;
+}
+
+.user_info span{
+    font-size: 20px;
+}
+
+.col{
+    height: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.test {
+    height: 300px;
+    width: 40%;
+    border-radius: 7px;
+    background-color: #971a1a;
+}
+
+form input{
+    height: 25px;
+    width: 95%;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+
+form {
+    display: flex;
+    flex-flow: row wrap;
 }

@@ -44,12 +44,14 @@ CREATE TABLE DadosSensor(
 CREATE USER 'system'@'localhost' IDENTIFIED BY '#5_Sys_C0ntr0l_5@';
 
 GRANT EXECUTE ON FUNCTION fct_cadastro TO 'system'@'localhost';
+GRANT EXECUTE ON PROCEDURE stg_login TO 'system'@'localhost';
 GRANT SELECT ON AgroConsult. * TO 'system'@'localhost';
 
 FLUSH PRIVILEGES;
 
--- Functions
 DELIMITER $$
+
+-- Functions
 SET GLOBAL log_bin_trust_function_creators = 1;
 
 CREATE FUNCTION fct_cadastro (nomeUsuario VARCHAR(100), email VARCHAR(100), senha VARCHAR(255), nomeEmpresa VARCHAR(45), cnpj VARCHAR(18))
@@ -65,6 +67,13 @@ BEGIN
     VALUES(nomeUsuario, email, senha, @fkEmpresa);
     
     RETURN concat('Cadastro realizado!');
+END;
+$$
+-- Stored Procedure;
+CREATE PROCEDURE stg_login (IN stg_email VARCHAR(100), IN stg_senha VARCHAR(100))
+BEGIN
+	SELECT idUsuario, nomeUsuario, email, cargo, senha, idEmpresa, nomeEmpresa, logo, cnpj FROM Usuario,Empresa
+		WHERE idEmpresa = fkEmpresa AND email = stg_email AND senha = stg_senha;
 END;
 $$
 -- Para sql server - remoto - produção

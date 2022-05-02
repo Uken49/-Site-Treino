@@ -66,6 +66,7 @@ function cadastrar(req, res) {
     var nameCorp = req.body.nameCorpServer;
     var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
+    var position = req.body.positionServer;
     var pass = req.body.passServer;
 
     // Faça as validações dos valores
@@ -77,12 +78,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu CNPJ está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
+    } else if (position == undefined) {
+        res.status(400).send("Seu email está undefined!");
     } else if (pass == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nameUser, nameCorp, cnpj, email, pass)
+        usuarioModel.cadastrar(nameUser, nameCorp, cnpj, email, position, pass)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -236,6 +236,7 @@ function register() {
     var nameCorp = inp_name_corp.value;
     var cnpj = inp_cnpj.value;
     var email = inp_email.value;
+    var position = 'Chefe';
     var pass = inp_pass.value;
     // var logo = inp_logo.value;
 
@@ -252,6 +253,7 @@ function register() {
             nameCorpServer: nameCorp,
             emailServer: email,
             cnpjServer: cnpj,
+            positionServer: position,
             passServer: pass,
             // logoServer: logo,
         })

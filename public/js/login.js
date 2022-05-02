@@ -93,7 +93,7 @@ function login() {
 
                 sessionStorage.ID_EMPRESA = json.idEmpresa;
                 sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
-                sessionStorage.CNPJ_EMPRESA = json.cnpjEmpresa;
+                sessionStorage.CNPJ_EMPRESA = json.cnpj;
                 sessionStorage.LOGO_EMPRESA = json.logoEmpresa;
 
                 window.location = "dashboard/index.html";

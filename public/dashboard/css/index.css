@@ -1,9 +1,27 @@
+b {
+    color: black;
+    font-size: 14px;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+}
+
+.subtitle div {
+    display: flex;
+    flex-direction: column;
+    border-radius: 13px;
+    padding: 10px;
+}
+
 .container {
     height: auto;
     padding: 20px 0;
     width: 100%;
     display: flex;
-    background-color: wheat;
+    background-color: #f5deb3;
     justify-content: space-around;
     align-items: center;
 }
@@ -77,4 +95,5 @@
     height: 20px;
     font-size: 15px;
     text-align: center;
+    border: #00000021 1px solid;
 }

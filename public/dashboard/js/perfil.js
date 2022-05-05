@@ -1,4 +1,6 @@
 // Sessões
+document.getElementsByTagName("body")[0].addEventListener('load', validarSessao())
+
 function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;

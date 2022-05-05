@@ -36,6 +36,8 @@ main {
     top: 100px;
     right: 0;
     bottom: 0;
+    background-color: #f5deb3;
+    border-radius: 10px;
     left: 110px;
     width: 90%;
     transition: 0.5s;

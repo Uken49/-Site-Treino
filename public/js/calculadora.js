@@ -33,17 +33,20 @@ function calcular() {
     document.getElementById("calc_res").innerHTML = phrase
 
     // Tornando o modal visivel
-    modal.style.display = "block";
+    modal.style.opacity = "1";
+    modal.style.pointerEvents = "auto";
 
     // Quando o usuário clicar <span> (x), fechar o modal
     span.onclick = function () {
-        modal.style.display = "none";
+        modal.style.opacity = "0";
+        modal.style.pointerEvents = "none";
     }
 
     // Quando o usuário clicar fora do modal, fechar o modal
     window.onclick = function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.style.opacity = "0";
+            modal.style.pointerEvents = "none";
         }
     }
 }

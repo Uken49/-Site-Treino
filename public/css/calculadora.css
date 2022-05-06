@@ -213,7 +213,7 @@ figure img {
 /* Modal */
 
 #calc_modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     height: 100%;
     width: 100%;
@@ -225,7 +225,10 @@ figure img {
     right: 0;
     overflow: auto;
     z-index: 1;
+    transition: 300ms;
+    opacity: 0;
     background-color: #00000066;
+    pointer-events: none;
 }
 
 .content-modal {

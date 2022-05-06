@@ -14,12 +14,6 @@ function validarSessao() {
 
     if (email != null && nome != null) {
         user_name.innerHTML = nome
-        inp_nome.value = nome
-        inp_email.value = email
-        inp_position.value = cargo
-        inp_nome_corp.value = nomeEmpresa
-        inp_cnpj.value = cnpj
-
     } else {
         window.location = "../login.html";
     }

@@ -204,18 +204,18 @@ function valNext() {
 
     document.getElementById('register_1').style.display = 'none'
     document.getElementById('register_2').style.display = 'flex'
-    document.getElementById('btn-next').innerHTML = 'CADASTRAR'
-    document.getElementById('btn-next').setAttribute('onclick', "registerCheck()")
-    document.getElementById('btn-prev').style.display = 'inline-block'
+    document.getElementById('btn_next').innerHTML = 'CADASTRAR'
+    document.getElementById('btn_next').setAttribute('onclick', "registerCheck()")
+    document.getElementById('btn_prev').style.display = 'inline-block'
     return true
 }
 
 function valPrev() {
     document.getElementById('register_1').style.display = 'flex'
     document.getElementById('register_2').style.display = 'none'
-    document.getElementById('btn-next').innerHTML = 'PRÓXIMO'
-    document.getElementById('btn-next').setAttribute('onclick', "valNext()")
-    document.getElementById('btn-prev').style.display = 'none'
+    document.getElementById('btn_next').innerHTML = 'PRÓXIMO'
+    document.getElementById('btn_next').setAttribute('onclick', "valNext()")
+    document.getElementById('btn_prev').style.display = 'none'
 }
 
 function registerCheck() {
@@ -230,6 +230,8 @@ function registerCheck() {
 // Enviando os dados para o banco
 
 function register() {
+    wait()
+
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nameUser = inp_name.value;
@@ -266,14 +268,66 @@ function register() {
 
             sessionStorage.EMAIL_USUARIO = email;
             sessionStorage.NOME_USUARIO = nameUser;
-
-            window.location = "dashboard/index.html";
+            
+            modalSucess()
+            setTimeout(() => {
+                window.location = "dashboard/index.html";
+            }, 1000);
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
+        phrase = "Houve um erro ao tentar realizar o cadastro!"
+        stopWait()
+        modalErro(phrase)
     });
-
+    
     return false;
+}
+
+function wait() {
+    let loading = document.getElementById('loading_gif')
+    btn_prev.style.opacity = '0'
+    btn_next.style.opacity = '0'
+    loading.style.display = 'block'
+}
+
+function stopWait() {
+    let loading = document.getElementById('loading_gif')
+    loading.style.display = 'none'
+    btn_prev.style.opacity = '1'
+    btn_next.style.opacity = '1'
+}
+
+function modalSucess() {
+    let modal_message = document.getElementById('modal_message')
+    let title = document.getElementById('title_message')
+    let message = document.getElementById('message')
+    let img = document.getElementById('modal_loading_gif')
+
+    modal_message.style.opacity = "1"
+    img.style.display = "block"
+    title.innerHTML = "Cadastro realizado com sucesso"
+    message.innerHTML = "Redirecionando"
+
+    setTimeout(() => {
+        modal_message.style.opacity = "0"
+    }, 2000);
+}
+
+function modalErro(phrase) {
+    let modal_message = document.getElementById('modal_message')
+    let title = document.getElementById('title_message')
+    let message = document.getElementById('message')
+    let img = document.getElementById('modal_loading_gif')
+
+    modal_message.style.opacity = "1"
+    img.style.display = "none"
+    title.innerHTML = phrase
+    message.innerHTML = ""
+
+    setTimeout(() => {
+        modal_message.style.opacity = "0"
+    }, 2000);
 }

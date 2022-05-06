@@ -40,6 +40,19 @@
 
     <!-- Conteúdo -->
     <main>
+        <!-- Modal de erro/login sucedido -->
+        <div id="modal_message">
+            <div class="content-modal">
+                <div class="info-modal">
+                    <h2 id="title_message"></h2>
+                    <p id="message"></p>
+                    <figure id="modal_loading_gif">
+                        <img src="assets/loading.gif" height="50px">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        
         <section class="container">
             <!-- Lado esquerdo do site -->
             <article class="content-image">
@@ -88,7 +101,11 @@
                             <a href="#">Esqueci minha senha</a>
                         </span>
                     </div>
-                    <button type="button" class="btn-login" onclick="login()">ENTRAR</button>
+                    <!-- Isso passa tão rápido que é impossível ver, pensando em remover ou adaptar -->
+                    <figure id="loading_gif" style="display: none">
+                        <img src="assets/loading.gif" height="50px">
+                    </figure>
+                    <button type="button" id="btn_login" class="btn-login">ENTRAR</button>
                 </form>
             </article>
         </section>

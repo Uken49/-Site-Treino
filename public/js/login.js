@@ -54,13 +54,21 @@ function valEmail() {
         return false
     }
 }
+// Chamando a função login quando clicar no botão de login
+var btn = document.getElementById('btn_login')
+btn.addEventListener("click", login)
 
 // Validando a entrada do usuário
 function login() {
+    wait()
+    
     let email = document.getElementById('inp_email').value
     let pass = document.getElementById('inp_pass').value
 
     if (!valEmail() | !passCheck()) {
+        phrase = "Preencha todos os campos corretamente"
+        stopWait()
+        modalErro(phrase)
         return false
     }
 
@@ -96,12 +104,16 @@ function login() {
                 sessionStorage.CNPJ_EMPRESA = json.cnpj;
                 sessionStorage.LOGO_EMPRESA = json.logoEmpresa;
 
-                window.location = "dashboard/index.html";
+                modalSucess()
+                setTimeout(() => {
+                    window.location = "dashboard/index.html";
+                }, 1000);
             });
 
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
-            alert('Email ou senha inválido')
+            phrase = "Email ou senha inválidos"
+            modalErro(phrase)
             
             label_email.className = 'label-float missing'
             label_pass.className = 'label-float missing'
@@ -113,7 +125,54 @@ function login() {
 
     }).catch(function (erro) {
         console.log(erro);
+        phrase = "Erro ao realizar o login"
+        stopWait()
+        modalErro(phrase)
     })
-
+    
     return false;
+}
+
+function wait() {
+    let loading = document.getElementById('loading_gif')
+    btn.style.display = 'none'
+    loading.style.display = 'block'
+}
+
+function stopWait() {
+    let loading = document.getElementById('loading_gif')
+    loading.style.display = 'none'
+    btn.style.display = 'block'
+}
+
+function modalSucess() {
+    let modal_message = document.getElementById('modal_message')
+    let title = document.getElementById('title_message')
+    let message = document.getElementById('message')
+    let img = document.getElementById('modal_loading_gif')
+    
+    modal_message.style.opacity = "1"
+    img.style.display = "block"
+    title.innerHTML = "Login realizado com sucesso"
+    message.innerHTML = "Redirecionando"
+
+    setTimeout(() => {
+        modal_message.style.opacity = "0"
+    }, 2000);
+}
+
+function modalErro(phrase) {
+    let modal_message = document.getElementById('modal_message')
+    let title = document.getElementById('title_message')
+    let message = document.getElementById('message')
+    let img = document.getElementById('modal_loading_gif')
+    
+    modal_message.style.opacity = "1"
+    img.style.display = "none"
+    title.innerHTML = phrase
+    message.innerHTML = ""
+
+    setTimeout(() => {
+        modal_message.style.opacity = "0"
+    }, 2000);
 }

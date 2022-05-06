@@ -40,6 +40,19 @@
 
     <!-- Conteúdo -->
     <main>
+        <!-- Modal de erro/login sucedido -->
+        <div id="modal_message">
+            <div class="content-modal">
+                <div class="info-modal">
+                    <h2 id="title_message"></h2>
+                    <p id="message"></p>
+                    <figure id="modal_loading_gif">
+                        <img src="assets/loading.gif" height="50px">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        
         <section class="container">
             <!-- Lado esquerdo do site -->
             <article class="content-image">
@@ -118,11 +131,15 @@
                         <label>Logo da empresa</label>
                         <span id="warning_img"></span>
                     </div>
-
+                    <!-- Isso passa tão rápido que é impossível ver, pensando em remover ou adaptar -->
+                    <figure id="loading_gif" style="display: none">
+                        <img src="assets/loading.gif" height="50px">
+                    </figure>
                     <div>
-                        <button type="button" id="btn-prev" onclick="valPrev()" class="btn-register"
+                        <button type="button" id="btn_prev" onclick="valPrev()" class="btn-register"
                             style="display: none;">VOLTAR</button>
-                        <button type="button" id="btn-next" onclick="valNext()" class="btn-register">PRÓXIMO</button>
+
+                        <button type="button" id="btn_next" onclick="valNext()" class="btn-register">PRÓXIMO</button>
                     </div>
                 </form>
             </article>

@@ -13,7 +13,7 @@ CREATE TABLE Usuario(
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT
     ,nomeUsuario VARCHAR(100) NOT NULL
     ,email VARCHAR(100) UNIQUE NOT NULL
-    ,cargo VARCHAR(20) 
+    ,cargo VARCHAR(20) NOT NULL
     ,senha VARCHAR(255) NOT NULL
     ,fkEmpresa INT NOT NULL, FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
 );
@@ -40,6 +40,28 @@ CREATE TABLE DadosSensor(
     ,fkSensor INT NOT NULL, FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
 );
 
+DELIMITER $$
+
+-- Functions
+SET GLOBAL log_bin_trust_function_creators = 1;
+DROP FUNCTION fct_cadastro;
+CREATE FUNCTION fct_cadastro (nomeUsuario VARCHAR(100), email VARCHAR(100), cargo VARCHAR(20), senha VARCHAR(255), nomeEmpresa VARCHAR(45), cnpj VARCHAR(18))
+RETURNS VARCHAR(100)
+BEGIN
+    SET cnpj = replace(cnpj,'.',''),
+		cnpj = replace(cnpj,'/',''),
+		cnpj = replace(cnpj,'-','');
+        
+    INSERT INTO Empresa (nomeEmpresa, cnpj) VALUES (nomeEmpresa, cnpj);
+    SET @fkEmpresa = (SELECT idEmpresa FROM Empresa ORDER BY idEmpresa DESC LIMIT 1);
+    
+    INSERT INTO Usuario (nomeUsuario, email, cargo, senha, fkEmpresa)
+		VALUES(nomeUsuario, email, cargo, senha, @fkEmpresa);
+    
+    RETURN concat('Cadastro realizado!');
+END;
+$$
+
 -- Usuário usado pelo sistema
 CREATE USER 'system'@'localhost' IDENTIFIED BY '#5_Sys_C0ntr0l_5@';
 
@@ -49,31 +71,4 @@ GRANT SELECT ON AgroConsult. * TO 'system'@'localhost';
 
 FLUSH PRIVILEGES;
 
-DELIMITER $$
-
--- Functions
-SET GLOBAL log_bin_trust_function_creators = 1;
-
-CREATE FUNCTION fct_cadastro (nomeUsuario VARCHAR(100), email VARCHAR(100), senha VARCHAR(255), nomeEmpresa VARCHAR(45), cnpj VARCHAR(18))
-RETURNS VARCHAR(100)
-BEGIN
-    SET cnpj = replace(cnpj,'.',''),
-		cnpj = replace(cnpj,'/',''),
-		cnpj = replace(cnpj,'-','');
-    INSERT INTO Empresa (nomeEmpresa, cnpj) VALUES (nomeEmpresa, cnpj);
-    SET @fkEmpresa = (SELECT idEmpresa FROM Empresa ORDER BY idEmpresa DESC LIMIT 1);
-    
-    INSERT INTO Usuario (nomeUsuario, email, senha, fkEmpresa)
-    VALUES(nomeUsuario, email, senha, @fkEmpresa);
-    
-    RETURN concat('Cadastro realizado!');
-END;
-$$
--- Stored Procedure;
-CREATE PROCEDURE stg_login (IN stg_email VARCHAR(100), IN stg_senha VARCHAR(100))
-BEGIN
-	SELECT idUsuario, nomeUsuario, email, cargo, senha, idEmpresa, nomeEmpresa, logo, cnpj FROM Usuario,Empresa
-		WHERE idEmpresa = fkEmpresa AND email = stg_email AND senha = stg_senha;
-END;
-$$
 -- Para sql server - remoto - produção

@@ -12,8 +12,7 @@ function listar() {
 function entrar(email, pass) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, pass)
     var instrucao = `
-        SELECT idUsuario, nomeUsuario, email, cargo, senha, idEmpresa, nomeEmpresa, logo, cnpj FROM Usuario,Empresa
-		WHERE idEmpresa = fkEmpresa AND email = '${email}' AND senha = '${pass}';
+        CALL stg_entrar ('${email}', '${pass}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -25,9 +24,8 @@ function cadastrar(nameUser, nameCorp, cnpj, email, position, pass) {
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-
     var instrucao = `
-        SELECT fct_cadastro ('${nameUser}', '${email}', '${position}', '${pass}', '${nameCorp}', '${cnpj}')
+        CALL stg_cadastro ('${nameUser}', '${email}', '${position}', '${pass}', '${nameCorp}', '${cnpj}')
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
 

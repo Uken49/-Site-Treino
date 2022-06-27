@@ -182,21 +182,6 @@ function valCnpj() {
     }
 }
 
-// Validando a extensão do arquivo para que seja uma imagem
-function valImg() {
-    // Um dia essa função vai funcionar, e nesse dia será o meu reinado
-    // let img = document.getElementById('inp_img').value
-    // let ext = algum jeito para pegar a extensão
-    // let arrayExt = ["png", "jpg", "jpeg", "jpe", "jfif"];
-
-    // if (arrayExt.indexOf(ext)) {
-    //     return true
-    // }else{
-    //     return false
-    // }
-    return true
-}
-
 function valNext() {
     if (!valName() | !valEmail() | !passCheck() | !valPass()) {
         return false
@@ -219,7 +204,7 @@ function valPrev() {
 }
 
 function registerCheck() {
-    if (!valCnpj() | !valNameCorp() | !valImg()) {
+    if (!valCnpj() | !valNameCorp()) {
         return false
     }
 
@@ -240,7 +225,6 @@ function register() {
     var email = inp_email.value;
     var position = 'Chefe';
     var pass = inp_pass.value;
-    // var logo = inp_logo.value;
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -257,7 +241,6 @@ function register() {
             cnpjServer: cnpj,
             positionServer: position,
             passServer: pass,
-            // logoServer: logo,
         })
     }).then(function (resposta) {
 

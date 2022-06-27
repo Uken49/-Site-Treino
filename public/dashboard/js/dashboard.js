@@ -1,45 +1,19 @@
-// Sessões
-document.getElementsByTagName("body")[0].addEventListener('load', validarSessao())
-
-function validarSessao() {
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    var cargo = sessionStorage.CARGO_USUARIO;
-
-    var nomeEmpresa = sessionStorage.NOME_EMPRESA;
-    var cnpj = sessionStorage.CNPJ_EMPRESA;
-    // var logo = sessionStorage.LOGO_EMPRESA;
-
-    var user_name = document.getElementById("user_name");
-
-    if (email != null && nome != null) {
-        user_name.innerHTML = nome
-    } else {
-        window.location = "../login.html";
-    }
-}
-
-function limparSessao() {
-    sessionStorage.clear();
-    window.location = "../login.html";
-}
-
 // Vetor
-var farmListId = document.getElementById("farm_list")
+const farmListId = document.getElementById("farm_list")
 
 farmListId.addEventListener('load', listFarm())
 function listFarm() {
     // Número identificador (id) da fazenda 
-    let farm = [2, 1, 3]
+    const farm = [2, 1, 3]
     // Classes (css) de status da fazenda
-    let farmStatus = ['critical', 'moderate', 'controlled']
+    const farmStatus = ['critical', 'moderate', 'controlled']
     // Pegando um número aleatório entre os id's
 
     // Criando 
-    let farmPosition = farm.length - 1
+    const farmPosition = farm.length - 1
     for (let i = 0; i <= farmPosition; i++) {
         // let status = parseInt(Math.random() * 3);
-        let status = i%3;
+        let status = i % 3;
         let farmList = document.getElementById("farm_list")
         farmList.insertAdjacentHTML("beforeEnd", `
             <article id='${farm[i]}' class="farm ${farmStatus[status]}">
@@ -57,7 +31,9 @@ function listFarm() {
 
 farmListId.addEventListener('click', chartGen)
 function chartGen(farmId) {
-    let farmContentId = document.getElementById("farm_content")
+    const farmContentId = document.getElementById("farm_content")
+    const farmTableId = document.getElementById("farm_table")
+
     farmContentId.innerHTML = `
     <section id="dashboard${farmId.target.id}">
         <h2>Fazenda ${farmId.target.id}</h2>
@@ -84,24 +60,69 @@ function chartGen(farmId) {
         </section>
     </section>
     `
+
+    // Redefinindo tabelas
+    farmTableId.innerHTML = ` 
+        <!-- Tabela das áreas mais instáveis -->
+        <article class="box">
+            <h2 class="critico">
+                Locais menos estáveis
+            </h2>
+            <table>
+                <tbody id="table_instavel">
+                    <tr class="critico">
+                        <th>Área</th>
+                        <th>Temperatura</th>
+                        <th>Umidade</th>
+                        <th>Status</th>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+        <!-- Tabela das áreas mais estáveis -->
+        <article class="box">
+            <h2 class="controlado">
+                Locais mais estáveis
+            </h2>
+            <table>
+                <tbody id="table_estavel">
+                    <tr class="controlado">
+                        <th>Área</th>
+                        <th>Temperatura</th>
+                        <th>Umidade</th>
+                        <th>Status</th>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </section> 
+    `
     chart1()
     chart2()
     chart3()
 }
 // Gráficos
-
-
-
 // Primeiro gráfico - Linha : Decidir o que terá
-function chart1() {
-    const chart_1 = document.getElementById('chart_1').getContext('2d');
-    const chart = new Chart(chart_1, {
+function grafico1() {
+    // const chart = document.getElementById('chart_1').getContext('2d')
+
+    // Dados para testes
+    let umidade = []
+    let label = []
+    const limit = parseInt(Math.random() * 4) + 3
+
+    for (let i = 1; i <= limit; i++) {
+        umidade.push(parseInt(Math.random() * 99) + 1)
+        label.push('Área ' + i)
+    }
+
+    const chartConfig = new Chart(chart, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: label,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Umidade',
+                data: umidade,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -126,21 +147,31 @@ function chart1() {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
         }
     });
 }
 
 // Segundo gráfico - Barra : Decidir o que terá
-function chart2() {
-    const chart_2 = document.getElementById('chart_2').getContext('2d');
-    const chart = new Chart(chart_2, {
+function grafico2() {
+    const chart = document.getElementById('chart_2').getContext('2d');
+    // Dados para testes
+    let umidade = []
+    let label = []
+    const limit = parseInt(Math.random() * 3) + 2
+
+    for (let i = 1; i <= limit; i++) {
+        umidade.push(parseInt(Math.random() * 99) + 1)
+        label.push('Área ' + i)
+    }
+
+    const chartConfig = new Chart(chart, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: label,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Umidade',
+                data: umidade,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.6)',
                     'rgba(54, 162, 235, 0.6)',
@@ -165,21 +196,32 @@ function chart2() {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
         }
     });
 }
 
+// Terceiro gráfico - Misto : Decidir o que terá
+function grafico3() {
+    const chart = document.getElementById('chart_3').getContext('2d');
+    // Dados para testes
+    let umidade = []
+    let temperatura = []
+    let label = []
+    const limit = parseInt(Math.random() * 3) + 2
 
-// Terceiro gráfico - Misto? : Decidir o que terá
-function chart3() {
-    const chart_3 = document.getElementById('chart_3').getContext('2d');
-    const chart = new Chart(chart_3, {
+    for (let i = 1; i <= limit; i++) {
+        umidade.push(parseInt(Math.random() * 99) + 1)
+        temperatura.push(parseInt(Math.random() * 44) + 1)
+        label.push('Área ' + i)
+    }
+
+    const chartConfig = new Chart(chart, {
         type: 'bar',
         data: {
             datasets: [{
-                label: 'Bar Dataset',
-                data: [10, 20, 30, 40],
+                label: 'Temperatura',
+                data: temperatura,
                 // this dataset is drawn below
                 order: 2,
                 backgroundColor: [
@@ -196,8 +238,8 @@ function chart3() {
                 ],
                 borderWidth: 1
             }, {
-                label: 'Line Dataset',
-                data: [10, 50, 1, 30],
+                label: 'Umidade',
+                data: umidade,
                 type: 'line',
                 // this dataset is drawn on top
                 order: 1,
@@ -209,7 +251,7 @@ function chart3() {
                 ],
                 borderWidth: 2
             }],
-            labels: ['January', 'February', 'March', 'April']
+            labels: label
         },
         options: {
             scales: {
@@ -219,4 +261,171 @@ function chart3() {
             }
         }
     });
+}
+
+// Atualizando gráficos em tempo real
+let proximaAtualizacao;
+
+
+// O gráfico é construído com três funções:
+// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+// 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+// Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+// para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+// A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function obterDadosGrafico(fkSensor) {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            console.log("Obtendo dados: Resposta Ok")
+            
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+
+                console.log("Indo plotar gráfico")
+                plotarGrafico(resposta, fkSensor);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+function plotarGrafico(resposta, fkSensor) {
+    console.log('iniciando plotagem do gráfico...');
+
+    var dados = {
+        labels: [],
+        datasets: [
+            {
+                yAxisID: 'y-umidade',
+                label: 'Umidade',
+                borderColor: '#32B9CD',
+                backgroundColor: '#32b9cd8f',
+                fill: true,
+                data: []
+            },
+            {
+                yAxisID: 'y-temperatura',
+                label: 'Temperatura',
+                borderColor: '#FFF',
+                backgroundColor: '#32b9cd8f',
+                fill: true,
+                data: []
+            }
+        ]
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        dados.labels.push(registro.horario);
+        dados.datasets[0].data.push(registro.umidade);
+        dados.datasets[1].data.push(registro.temperatura);
+    }
+
+    console.log(JSON.stringify(dados));
+
+
+    // const chart = document.getElementById('chart_1').getContext('2d')
+    var ctx = canvas_grafico.getContext('2d');
+    window.grafico_linha = Chart.Line(ctx, {
+        data: dados,
+        options: {
+            responsive: true,
+            animation: { duration: 500 },
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: false,
+                text: 'Dados capturados'
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    id: 'y-temperatura',
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0
+                    }
+                }, {
+                    type: 'linear',
+                    display: false,
+                    position: 'right',
+                    id: 'y-umidade',
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0
+                    },
+
+                    gridLines: {
+                        drawOnChartArea: false,
+                    },
+                }],
+            }
+        }
+    });
+    console.log("Plotando gráfico =)")
+
+    setTimeout(() => atualizarGrafico(fkSensor, dados), 2000);
+}
+
+
+// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+// buscando a última medida inserida em tabela contendo as capturas, 
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+function atualizarGrafico(fkSensor, dados) {
+    // console.log("Indo atualizar gráfico")
+
+    fetch(`/medidas/tempo-real/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (novoRegistro) {
+
+                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                console.log(`Dados atuais do gráfico: ${dados}`);
+
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].horario); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                window.grafico_linha.update();
+
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados), 2000);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados), 2000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 }

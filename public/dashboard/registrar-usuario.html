@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/registrar-usuario.css">
+    <link rel="stylesheet" href="css/global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/sistema/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../img/sistema/favicon/android-chrome-512x512.png">
+    <title>AgroConsult - Registrar Usuários</title>
+</head>
+
+<body>
+    <!-- Barra de navegação do topo -->
+    <header class="container">
+        <img class="ml-5" src="../assets/img/logo-agroconsult.png" alt="Logo da empresa que usa o sistema">
+
+        <nav class="navbar top-bar">
+            <ul>
+                <li><img src="../assets/svg/notification.svg" alt="Notificações" title="Notificação"></li>
+                <li><img src="../assets/svg/help.svg" alt="Ajuda da página" title="Ajuda rápida"></li>
+            </ul>
+
+            <div class="navbar">
+                <span id="span_user">Sample</span>
+                <img src="../assets/svg/down-arrow.svg" alt="Menu com queda">
+                <ul class="navbar drop">
+                    <li>
+                        <a href="perfil.html">
+                            <img src="../assets/svg/user-perfil.svg" alt="Guia de como usar o sistema">
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a id="logout">
+                            <img src="../assets/svg/logout.svg" alt="Sair do site">
+                            <span>Sair</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Barra de navegação lateral -->
+        <aside class="navbar side-bar">
+            <ul>
+                <li class="list active">
+                    <a href="index.html">
+                        <figure>
+                            <img src="../assets/svg/home.svg" alt="Página inicial">
+                            <figcaption>Inicio</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard.html">
+                        <figure>
+                            <img src="../assets/svg/chart.svg" alt="Página com gráficos">
+                            <figcaption>Gráficos</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="list" id="register-user">
+                    <a href="#">
+                        <figure>
+                            <img src="../assets/svg/account-group.svg" alt="Página para registrar usúarios">
+                            <figcaption>Registrar usúarios</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="guia.html">
+                        <figure>
+                            <img src="../assets/svg/help.svg" alt="Guia de como usar o sistema">
+                            <figcaption>Guia</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo da página -->
+        <section class="page-content">
+            <!-- Cadastrar um novo usuário -->
+            <section>
+                <form>
+                    <div class="txt-center">
+                        <h2>Registrar novo usuário</h2>
+                        <span>Ao registrar, o usuário poderá acessar o sistema utilizando o email e senha
+                            definido.</span>
+                    </div>
+
+                    <!-- Campos do cadastro -->
+                    <article class="form-inputs">
+                        <div>
+                            <input type="text" placeholder=" " id="inp_name">
+                            <label for="inp_name">Nome:</label>
+                            <span id="warning_name"></span>
+                        </div>
+                        <div>
+                            <input type="email" placeholder=" " id="inp_email">
+                            <label for="inp_email">Email:</label>
+                            <span id="warning_email"></span>
+                        </div>
+                        <div>
+                            <input type="text" placeholder=" " id="inp_position">
+                            <label for="inp_position">Cargo:</label>
+                            <span id="warning_position"></span>
+                        </div>
+                        <div>
+                            <input type="password" placeholder=" " id="inp_pass">
+                            <label for="inp_pass">Senha:</label>
+                            <label for="inp_pass" class="view-pass"><img id="label-img"
+                                    src="../assets/img/eye-closed"></label>
+                            <span id="warning_pass"></span>
+                        </div>
+                    </article>
+
+                    <button type="button" class="btn-register" onclick="registraruser()">Registrar</button>
+                </form>
+            </section>
+
+            <!-- Visualizar usuários online -->
+            <section class="users-online">
+                <!-- Pesquisa de usuário -->
+                <article class="user-search">
+                    <div class="div_search">
+                        <input type="search" id="inp_search" placeholder="Procurar usuário" onkeyup="">
+                        <label for="inp_search"><img src="../assets/svg/search.svg"></label>
+                    </div>
+                    <select id="search_category">
+                        <option value="sel_name">Nome</option>
+                        <option value="sel_email">Email</option>
+                        <option value="sel_position">Cargo</option>
+                        <option value="sel_status">Status</option>
+                    </select>
+                </article>
+
+                <!-- Usuários cadastrados -->
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="txt-center" colspan="7" id="qtdFuncionario">
+                                0 Usuário(s) encontrado
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="txt-center">#</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Cargo</th>
+                            <th>Senha</th>
+                            <th class="txt-center">Editar</th>
+                            <th class="txt-center">Deletar</th>
+                        </tr>
+                    </thead>
+                    
+                    <!-- Tabela criada com js -->
+                    <tbody id="tabela"></tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+
+</body>
+
+<script src="js/global.js"></script>
+<script src="js/registrar-usuario.js"></script>
+
+</html>

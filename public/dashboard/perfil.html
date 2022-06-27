@@ -15,69 +15,71 @@
 
 <body>
     <!-- Barra de navegação do topo -->
-    <header>
-        <div class="wrapper">
-            <img class="img-logo" src="../assets/img/logo-agroconsult.png" alt="logo da agroconsult">
+    <header class="container">
+        <img class="ml-5" src="../assets/img/logo-agroconsult.png" alt="Logo da empresa que usa o sistema">
 
-            <nav class="header-navbar">
-                <ul class="header-nav-items">
-                    <li><img src="../assets/svg/notification.svg"></li>
-                    <li><img src="../assets/svg/help.svg"></li>
+        <nav class="navbar top-bar">
+            <ul>
+                <li><img src="../assets/svg/notification.svg" alt="Notificações" title="Notificação"></li>
+                <li><img src="../assets/svg/help.svg" alt="Ajuda da página" title="Ajuda rápida"></li>
+            </ul>
+
+            <div class="navbar">
+                <span id="span_user">Sample</span>
+                <img src="../assets/svg/down-arrow.svg" alt="Menu com queda">
+                <ul class="navbar drop">
+                    <li>
+                        <a href="#">
+                            <img src="../assets/svg/user-perfil.svg" alt="Guia de como usar o sistema">
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a id="logout">
+                            <img src="../assets/svg/logout.svg" alt="Sair do site">
+                            <span>Sair</span>
+                        </a>
+                    </li>
                 </ul>
-                <div class="header-nav-box">
-                    <span id="user_name"></span>
-                    <img src="../assets/svg/down-arrow.svg">
-                    <ul>
-                        <li>
-                            <span class="icon"><img src="../assets/svg/user-perfil.svg"></span>
-                            <span class="title">Meu Perfil</span>
-                        </li>
-                        <li>
-                            <span class="icon"><img src="../assets/svg/settings.svg"></span>
-                            <span class="title">Configuração</span>
-                        </li>
-                        <li onclick="limparSessao()">
-                            <span class="icon"><img src="../assets/svg/logout.svg"></span>
-                            <span class="title">Sair</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <!-- Barra de navegação do lado direito - menu -->
-        <aside class="side-bar">
+        <!-- Barra de navegação lateral -->
+        <aside class="navbar side-bar">
             <ul>
                 <li class="list">
                     <a href="index.html">
-                        <span class="icon"><img src="../assets/svg/home.svg"></span>
-                        <span class="title">Inicio</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="dashboard.html">
-                        <span class="icon"><img src="../assets/svg/chart.svg"></span>
-                        <span class="title">Gráficos</span>
+                        <figure>
+                            <img src="../assets/svg/home.svg" alt="Página inicial">
+                            <figcaption>Inicio</figcaption>
+                        </figure>
                     </a>
                 </li>
                 <li class="list">
                     <a href="#">
-                        <span class="icon"><img src="../assets/svg/help.svg"></span>
-                        <span class="title">Ajuda</span>
+                        <figure>
+                            <img src="../assets/svg/chart.svg" alt="Página com gráficos">
+                            <figcaption>Gráficos</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="list" id="register-user">
+                    <a href="registrar-usuario.html">
+                        <figure>
+                            <img src="../assets/svg/account-group.svg" alt="Página para registrar usúarios">
+                            <figcaption>Registrar usúarios</figcaption>
+                        </figure>
                     </a>
                 </li>
                 <li class="list">
-                    <a href="#">
-                        <span class="icon"><img src="../assets/svg/account-group.svg"></span>
-                        <span class="title">Cadastrar usuários</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                        <span class="icon"><img src="../assets/svg/user-list.svg"></span>
-                        <span class="title">Usuários online</span>
+                    <a href="guia.html">
+                        <figure>
+                            <img src="../assets/svg/help.svg" alt="Guia de como usar o sistema">
+                            <figcaption>Guia</figcaption>
+                        </figure>
                     </a>
                 </li>
             </ul>
@@ -86,7 +88,7 @@
         <!-- Conteúdo da página -->
         <section class="page-content">
             <h1>Perfil</h1>
-            <section class="container">
+            <section class="wrapper">
                 <div class="user_info">
                     <span>Informações gerais</span>
                     <!-- Formulário para atualizar os dados -->
@@ -141,8 +143,4 @@
 
 </html>
 
-<script src="js/side-bar.js"></script> <!-- Barra de navegação lateral -->
-<script src="js/perfil.js"></script><!-- Gráficos e sessões -->
-<!-- 
-    inspiração: https://github.com/topics/appseed-sample
- -->
+<script src="js/global.js"></script>

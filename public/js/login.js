@@ -61,7 +61,7 @@ btn.addEventListener("click", login)
 // Validando a entrada do usuário
 function login() {
     wait()
-    
+
     let email = document.getElementById('inp_email').value
     let pass = document.getElementById('inp_pass').value
 
@@ -91,18 +91,18 @@ function login() {
             console.log(resposta);
 
             resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
+                console.log(json[0]);
+                console.log(JSON.stringify(json[0]));
 
-                sessionStorage.ID_USUARIO = json.idUsuario;
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                sessionStorage.CARGO_USUARIO = json.cargo;
+                sessionStorage.ID_USUARIO = json[0].idUsuario;
+                sessionStorage.EMAIL_USUARIO = json[0].email;
+                sessionStorage.NOME_USUARIO = json[0].nomeUsuario;
+                sessionStorage.CARGO_USUARIO = json[0].cargo;
 
-                sessionStorage.ID_EMPRESA = json.idEmpresa;
-                sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
-                sessionStorage.CNPJ_EMPRESA = json.cnpj;
-                sessionStorage.LOGO_EMPRESA = json.logoEmpresa;
+                sessionStorage.ID_EMPRESA = json[0].idEmpresa;
+                sessionStorage.NOME_EMPRESA = json[0].nomeEmpresa;
+                sessionStorage.CNPJ_EMPRESA = json[0].cnpj;
+                sessionStorage.LOGO_EMPRESA = json[0].logoEmpresa;
 
                 modalSucess()
                 setTimeout(() => {
@@ -114,7 +114,7 @@ function login() {
             console.log("Houve um erro ao tentar realizar o login!");
             phrase = "Email ou senha inválidos"
             modalErro(phrase)
-            
+
             label_email.className = 'label-float missing'
             label_pass.className = 'label-float missing'
 
@@ -129,28 +129,27 @@ function login() {
         stopWait()
         modalErro(phrase)
     })
-    
+
     return false;
 }
 
+const loading = document.getElementById('loading_gif')
+const modal_message = document.getElementById('modal_message')
+const title = document.getElementById('title_message')
+const message = document.getElementById('message')
+const img = document.getElementById('modal_loading_gif')
+
 function wait() {
-    let loading = document.getElementById('loading_gif')
     btn.style.display = 'none'
     loading.style.display = 'block'
 }
 
 function stopWait() {
-    let loading = document.getElementById('loading_gif')
     loading.style.display = 'none'
     btn.style.display = 'block'
 }
 
 function modalSucess() {
-    let modal_message = document.getElementById('modal_message')
-    let title = document.getElementById('title_message')
-    let message = document.getElementById('message')
-    let img = document.getElementById('modal_loading_gif')
-    
     modal_message.style.opacity = "1"
     img.style.display = "block"
     title.innerHTML = "Login realizado com sucesso"
@@ -162,11 +161,8 @@ function modalSucess() {
 }
 
 function modalErro(phrase) {
-    let modal_message = document.getElementById('modal_message')
-    let title = document.getElementById('title_message')
-    let message = document.getElementById('message')
-    let img = document.getElementById('modal_loading_gif')
-    
+    btn.style.display = 'block'
+    loading.style.display = 'none'
     modal_message.style.opacity = "1"
     img.style.display = "none"
     title.innerHTML = phrase

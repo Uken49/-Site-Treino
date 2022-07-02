@@ -1,50 +1,11 @@
--- Para workbench - localhost - desenvolvimento
-CREATE DATABASE AgroConsult;
+-- Criando procedure e events
 USE AgroConsult;
-
-CREATE TABLE Empresa(
-	idEmpresa INT PRIMARY KEY AUTO_INCREMENT
-    ,nomeEmpresa VARCHAR(45) UNIQUE NOT NULL
-    ,logo VARCHAR(2000)
-    ,CNPJ CHAR(14) UNIQUE NOT NULL
-);
-
-CREATE TABLE Usuario(
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT
-    ,nomeUsuario VARCHAR(100) NOT NULL
-    ,email VARCHAR(100) UNIQUE NOT NULL
-    ,cargo VARCHAR(20) NOT NULL
-    ,senha VARCHAR(255) NOT NULL
-    ,fkEmpresa INT NOT NULL, FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
-);
-
-CREATE TABLE Fazenda(
-	idFazenda INT PRIMARY KEY AUTO_INCREMENT
-    ,bairro VARCHAR(45) NOT NULL
-    ,cep VARCHAR(8) NOT NULL
-    ,rua VARCHAR(60) NOT NULL
-    ,fkEmpresa INT NOT NULL, FOREIGN KEY (fkEmpresa) REFERENCES Empresa (idEmpresa)
-);
-
-CREATE TABLE Sensor(
-	idSensor INT PRIMARY KEY AUTO_INCREMENT
-    ,localizacao VARCHAR(45) UNIQUE NOT NULL
-    ,fkFazenda INT NOT NULL, FOREIGN KEY (fkFazenda) REFERENCES Fazenda (idFazenda)
-);
-
-CREATE TABLE DadosSensor(
-	idDado INT PRIMARY KEY AUTO_INCREMENT
-    ,temperatura DECIMAL(4,2) NOT NULL
-    ,umidade DECIMAL(4,2) NOT NULL
-    ,horario DATETIME NOT NULL
-    ,fkSensor INT NOT NULL, FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor)
-);
 
 # Tirando o autocommit para melhor segurança da query
 # SET @@autocommit = 0;
 # O comando de cima tira o autocommit de todo o seu sistema, para reverter colocar 1 ao invés de 0
 
--- Criando processos do sistemas
+# Procedure de cadastro usuário
 DELIMITER $$
 CREATE PROCEDURE stg_cadastro
  (IN nomeUsuario VARCHAR(100), IN email VARCHAR(100), IN cargo VARCHAR(20), IN senha VARCHAR(255), IN nomeEmpresa VARCHAR(45), IN cnpj VARCHAR(18))
@@ -77,6 +38,7 @@ BEGIN
 END$$
 DELIMITER ;
 
+# Procedure de login no sistema
 DELIMITER $$
 CREATE PROCEDURE stg_entrar (IN email VARCHAR(100), IN senha VARCHAR(255))
 BEGIN
@@ -89,6 +51,26 @@ BEGIN
             AND senha = @senha;
 END$$
 DELIMITER ;
+
+# Procedure que junto ao evento, vai inserir os dados na tabela
+DELIMITER $$
+CREATE PROCEDURE stg_inserirDadosSensor
+ (IN MinTemp DECIMAL(4,2), IN MaxTemp DECIMAL(4,2), IN MinUmi DECIMAL(4,2), IN MaxUmi DECIMAL(4,2))
+BEGIN
+	INSERT INTO DadosSensor (temperatura, umidade, horario, fkSensor) VALUES
+		(MinTemp + CEIL(RAND() * (MaxTemp - MinTemp)), MinUmi + CEIL(RAND() * (MaxUmi - MinUmi)), NOW(), 1);
+END$$
+DELIMITER ;
+
+# Criando o evento de inserção dos dados
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT insert_dados
+	ON SCHEDULE
+		EVERY 5 SECOND
+    DO
+		CALL stg_inserirDadosSensor (19, 39, 20, 45);
+
 
 -- Usuário usado pelo sistema
 CREATE USER 'system'@'localhost' IDENTIFIED BY '#5_Sys_C0ntr0l_5@';

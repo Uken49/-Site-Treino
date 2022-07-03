@@ -6,11 +6,7 @@ const area = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 farmListId.addEventListener('load', listFarm())
 function listFarm() {
-    // Número identificador (id) da fazenda 
-    // Classes (css) de status da fazenda
-    // Pegando um número aleatório entre os id's
-
-    // Criando 
+    // Criando a lista das fazendas clicaveis
     const farmPosition = farm.length - 1
     for (let i = 0; i <= farmPosition; i++) {
         // let status = parseInt(Math.random() * 3);
@@ -99,7 +95,8 @@ function chartGen(farmId) {
         </article>
     </section> 
     `
-    chart1()
+    // chart1()
+    obterDadosGrafico(1);
     chart2()
     chart3()
     tables()
@@ -320,7 +317,7 @@ function obterDadosGrafico(fkSensor) {
     fetch(`/medidas/ultimas/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             console.log("Obtendo dados: Resposta Ok")
-
+            
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
@@ -375,9 +372,8 @@ function plotarGrafico(resposta, fkSensor) {
     console.log(JSON.stringify(dados));
 
 
-    // const chart = document.getElementById('chart_1').getContext('2d')
-    var ctx = canvas_grafico.getContext('2d');
-    window.grafico_linha = Chart.Line(ctx, {
+    const chart = document.getElementById('chart-1').getContext('2d')
+    window.grafico_linha = Chart.Line(chart, {
         data: dados,
         options: {
             responsive: true,
@@ -396,7 +392,7 @@ function plotarGrafico(resposta, fkSensor) {
                     id: 'y-temperatura',
                     ticks: {
                         beginAtZero: true,
-                        max: 100,
+                        max: 50,
                         min: 0
                     }
                 }, {
@@ -406,7 +402,7 @@ function plotarGrafico(resposta, fkSensor) {
                     id: 'y-umidade',
                     ticks: {
                         beginAtZero: true,
-                        max: 100,
+                        max: 50,
                         min: 0
                     },
 
@@ -451,7 +447,7 @@ function atualizarGrafico(fkSensor, dados) {
                 window.grafico_linha.update();
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados), 5000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');

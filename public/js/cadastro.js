@@ -1,7 +1,8 @@
 // Checando se a senha é válida
+
 function passCheck() {
-    let pass = document.getElementById('inp_pass').value
-    let regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
+    const pass = document.getElementById('inp_pass').value
+    const regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
 
     // Verificando se a senha é forte com regex
     if (pass == '') {
@@ -16,15 +17,15 @@ function passCheck() {
         return true
     } else {
         label_pass.className = 'label-float missing'
-        warning_pass.innerHTML = 'Use oito ou mais caracteres com uma combinação de letras, números e símbolos: @ ! # $ % ^ & * ( ) / e \\'
+        warning_pass.innerHTML = 'Use oito ou mais caracteres com uma combinação de constras, números e símbolos: @ ! # $ % ^ & * ( ) / e \\'
         return false
     }
 }
 
 // Checando se as duas senhas são iguais
 function valPass() {
-    let pass = document.getElementById('inp_pass').value
-    let passConf = document.getElementById('inp_pass_conf').value
+    const pass = document.getElementById('inp_pass').value
+    const passConf = document.getElementById('inp_pass_conf').value
 
     if (passConf.length >= 6) {
         if (pass == passConf) {
@@ -45,8 +46,8 @@ function valPass() {
 
 // Validando email
 function valEmail() {
-    let email = document.getElementById('inp_email').value
-    let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
+    const email = document.getElementById('inp_email').value
+    const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
     // Essa expressão não garante a veracidade 100% de um email, para ser 100% precisa mandar confirmação por email
 
     // Validando email se os caracteres do email é válido
@@ -69,8 +70,8 @@ function valEmail() {
 
 // Validando nome
 function valName() {
-    let name = document.getElementById('inp_name').value
-    let regex = /^[a-z].* {1,}[a-z]{1,}/gi
+    const name = document.getElementById('inp_name').value
+    const regex = /^[a-z].* {1,}[a-z]{1,}/gi
 
     // Validando a quantidade de palavra e caracteres
     if (name == '') {
@@ -90,7 +91,7 @@ function valName() {
 
 // Validando nome da empresa
 function valNameCorp() {
-    let name = document.getElementById('inp_name_corp').value
+    const name = document.getElementById('inp_name_corp').value
 
     // Validando a quantidade de palavra e caracteres
     if (name == '') {
@@ -106,7 +107,7 @@ function valNameCorp() {
 
 // Validando CNPJ
 function valCnpj() {
-    let cnpj = document.getElementById('inp_cnpj').value;
+    const cnpj = document.getElementById('inp_cnpj').value;
     cnpj = cnpj.replace(/[^\d]+/g, '');
 
     if (cnpj == '') {
@@ -219,12 +220,12 @@ function register() {
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nameUser = inp_name.value;
-    var nameCorp = inp_name_corp.value;
-    var cnpj = inp_cnpj.value;
-    var email = inp_email.value;
-    var position = 'Chefe';
-    var pass = inp_pass.value;
+    const nameUser = inp_name.value;
+    const nameCorp = inp_name_corp.value;
+    const cnpj = inp_cnpj.value;
+    const email = inp_email.value;
+    const position = 'Chefe';
+    const pass = inp_pass.value;
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

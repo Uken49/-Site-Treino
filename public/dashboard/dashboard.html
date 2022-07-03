@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- <link rel="stylesheet" href="css/dashboard.css"> -->
+    <link rel="stylesheet" href="css/dashboard2.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
@@ -67,7 +68,7 @@
                         </figure>
                     </a>
                 </li>
-                <li class="list" id="register-user">
+                <li class="list">
                     <a href="registrar-usuario.html">
                         <figure>
                             <img src="../assets/svg/account-group.svg" alt="Página para registrar usúarios">
@@ -115,13 +116,13 @@
                 <article class="metrics controlled">
                     <span>Menor Temperatura</span>
                     <div class="circle">
-                        <span id="min_celsius">24°</span>
+                        <span id="min-celsius">24°</span>
                     </div>
                 </article>
                 <article class="metrics moderate">
                     <span>Maior Temperatura</span>
                     <div class="circle">
-                        <span id="max_celsius">31°</span>
+                        <span id="max-celsius">31°</span>
                     </div>
                 </article>
 
@@ -129,33 +130,25 @@
                 <article class="metrics controlled">
                     <span>Menor Umidade</span>
                     <div class="circle">
-                        <span id="min_moisture">17%</span>
+                        <span id="min-moisture">17%</span>
                     </div>
                 </article>
                 <article class="metrics critical">
                     <span>Maior Umidade</span>
                     <div class="circle">
-                        <span id="max_moisture">45%</span>
+                        <span id="max-moisture">45%</span>
                     </div>
                 </article>
             </section>
 
             <!-- Seleção das fazendas para analisar -->
-            <section id="farm_list"></section>
+            <section id="farm-list"></section>
 
             <!-- Gráficos da fazenda selecionada -->
-            <section id="farm_content">
-                <!-- <div class="graph">
-                    <canvas id="chart1"></canvas>
-                </div> -->
-
-                <div class="graph">
-                    <!-- <canvas id="canvas_grafico"></canvas> -->
-                </div>
-            </section>
+            <section id="farm-content"></section>
 
             <!-- Tabelas com dados para análise rápida -->
-            <section id="farm_tabela" class="dash-container"></section>
+            <section id="farm-table" class="dash-container"></section>
         </section>
     </main>
 </body>

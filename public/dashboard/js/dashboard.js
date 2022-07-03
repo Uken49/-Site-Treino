@@ -1,12 +1,13 @@
-// Vetor
-const farmListId = document.getElementById("farm_list")
+// Vet o r    
+const farmListId = document.getElementById("farm-list")
+const farm = [2, 1, 3]
+const farmStatus = ['critico', 'moderado', 'controlado']
+const area = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 farmListId.addEventListener('load', listFarm())
 function listFarm() {
     // Número identificador (id) da fazenda 
-    const farm = [2, 1, 3]
     // Classes (css) de status da fazenda
-    const farmStatus = ['critical', 'moderate', 'controlled']
     // Pegando um número aleatório entre os id's
 
     // Criando 
@@ -14,7 +15,7 @@ function listFarm() {
     for (let i = 0; i <= farmPosition; i++) {
         // let status = parseInt(Math.random() * 3);
         let status = i % 3;
-        let farmList = document.getElementById("farm_list")
+        let farmList = document.getElementById("farm-list")
         farmList.insertAdjacentHTML("beforeEnd", `
             <article id='${farm[i]}' class="farm ${farmStatus[status]}">
                 <div class="farm-position">
@@ -31,30 +32,30 @@ function listFarm() {
 
 farmListId.addEventListener('click', chartGen)
 function chartGen(farmId) {
-    const farmContentId = document.getElementById("farm_content")
-    const farmTableId = document.getElementById("farm_table")
+    const farmContentId = document.getElementById("farm-content")
+    const farmTableId = document.getElementById("farm-table")
 
     farmContentId.innerHTML = `
     <section id="dashboard${farmId.target.id}">
         <h2>Fazenda ${farmId.target.id}</h2>
-        <section class="container">
+        <section class="wrapper">
             <article class="fill">
-                <div style="position: relative; height:93.5%; width:100%">
-                    <canvas id="chart_1" width="1200" height="281"></canvas>
+                <div style="position: relative; height:100%; width:100%">
+                    <canvas id="chart-1" width="1200" height="281"></canvas>
                 </div>
             </article>
         </section>
 
-        <section class="container">
+        <section class="wrapper">
             <article class="box">
-                <div style="position: relative; height:93.5%; width:100%">
-                    <canvas id="chart_2" width="100%" height="40"></canvas>
+                <div style="position: relative; height:100%; width:100%">
+                    <canvas id="chart-2" width="100%" height="40"></canvas>
                 </div>
             </article>
 
             <article class="box">
-                <div style="position: relative; height:93.5%; width:100%">
-                    <canvas id="chart_3" width="100%" height="40"></canvas>
+                <div style="position: relative; height:100%; width:100%">
+                    <canvas id="chart-3" width="100%" height="40"></canvas>
                 </div>
             </article>
         </section>
@@ -69,7 +70,7 @@ function chartGen(farmId) {
                 Locais menos estáveis
             </h2>
             <table>
-                <tbody id="table_instavel">
+                <tbody id="table1">
                     <tr class="critico">
                         <th>Área</th>
                         <th>Temperatura</th>
@@ -79,13 +80,14 @@ function chartGen(farmId) {
                 </tbody>
             </table>
         </article>
+        
         <!-- Tabela das áreas mais estáveis -->
         <article class="box">
             <h2 class="controlado">
                 Locais mais estáveis
             </h2>
             <table>
-                <tbody id="table_estavel">
+                <tbody id="table2">
                     <tr class="controlado">
                         <th>Área</th>
                         <th>Temperatura</th>
@@ -100,11 +102,43 @@ function chartGen(farmId) {
     chart1()
     chart2()
     chart3()
+    tables()
+}
+
+function tables() {
+    // Criando a tabela dos locais mais estáveis
+    const farmTable1 = document.getElementById("table1")
+    const farmTable2 = document.getElementById("table2")
+    for (let i = 0; i < area.length; i++) {
+        let status = parseInt(Math.random() * 3); // Gerando o status aleatóriamente
+        // let status = i % 3;
+        farmTable1.insertAdjacentHTML("beforeEnd", `
+                <tr class="${farmStatus[status]}">
+                    <td>Área ${area[i]}</td>
+                    <td>13</td>
+                    <td>13</td>
+                    <td style="text-transform: capitalize;" >${farmStatus[status]}</td>
+                </tr>
+        `)
+    }
+
+    for (let i = 0; i < area.length; i++) {
+        let status = parseInt(Math.random() * 3); // Gerando o status aleatóriamente
+        // let status = i % 3;
+        farmTable2.insertAdjacentHTML("beforeEnd", `
+                <tr class="${farmStatus[status]}">
+                    <td>Área ${area[i]}</td>
+                    <td>13</td>
+                    <td>13</td>
+                    <td style="text-transform: capitalize;" >${farmStatus[status]}</td>
+                </tr>
+        `)
+    }
 }
 // Gráficos
 // Primeiro gráfico - Linha : Decidir o que terá
-function grafico1() {
-    // const chart = document.getElementById('chart_1').getContext('2d')
+function chart1() {
+    const chart = document.getElementById('chart-1').getContext('2d')
 
     // Dados para testes
     let umidade = []
@@ -153,8 +187,8 @@ function grafico1() {
 }
 
 // Segundo gráfico - Barra : Decidir o que terá
-function grafico2() {
-    const chart = document.getElementById('chart_2').getContext('2d');
+function chart2() {
+    const chart = document.getElementById('chart-2').getContext('2d');
     // Dados para testes
     let umidade = []
     let label = []
@@ -202,8 +236,8 @@ function grafico2() {
 }
 
 // Terceiro gráfico - Misto : Decidir o que terá
-function grafico3() {
-    const chart = document.getElementById('chart_3').getContext('2d');
+function chart3() {
+    const chart = document.getElementById('chart-3').getContext('2d');
     // Dados para testes
     let umidade = []
     let temperatura = []
@@ -286,7 +320,7 @@ function obterDadosGrafico(fkSensor) {
     fetch(`/medidas/ultimas/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             console.log("Obtendo dados: Resposta Ok")
-            
+
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();

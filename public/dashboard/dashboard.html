@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/dashboard.css"> -->
-    <link rel="stylesheet" href="css/dashboard2.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
@@ -91,19 +90,19 @@
         <section class="page-content">
             <!-- Legenda -->
             <section class="subtitle">
-                <div class="controlled">
+                <div class="controlado">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura ideal: <b>24°</b> entre
                         <b>30°</b></span>
                     <span> <img src="../assets/svg/full-circle.svg"> Umidade ideal: <b>16%</b> entre <b>18%</b></span>
                 </div>
 
-                <div class="moderate">
+                <div class="moderado">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura moderada: <b>23°</b> e
                         <b>31°</b></span>
                     <span> <img src="../assets/svg/full-circle.svg"> Umidade moderada: <b>15%</b> e <b>19%</b></span>
                 </div>
 
-                <div class="critical">
+                <div class="critico">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura crítica: <b>22°</b> ou menos e
                         <b>32°</b> ou mais</span>
                     <span> <img src="../assets/svg/full-circle.svg"> Umidade crítica: <b>14%</b> ou menos e <b>20%</b>
@@ -113,13 +112,13 @@
 
             <section class="wrapper">
                 <!-- A maior/menor temperatura registrada no momento -->
-                <article class="metrics controlled">
+                <article class="metrics controlado">
                     <span>Menor Temperatura</span>
                     <div class="circle">
                         <span id="min-celsius">24°</span>
                     </div>
                 </article>
-                <article class="metrics moderate">
+                <article class="metrics moderado">
                     <span>Maior Temperatura</span>
                     <div class="circle">
                         <span id="max-celsius">31°</span>
@@ -127,13 +126,13 @@
                 </article>
 
                 <!-- A maior/menor umidade registrada no momento -->
-                <article class="metrics controlled">
+                <article class="metrics controlado">
                     <span>Menor Umidade</span>
                     <div class="circle">
                         <span id="min-moisture">17%</span>
                     </div>
                 </article>
-                <article class="metrics critical">
+                <article class="metrics critico">
                     <span>Maior Umidade</span>
                     <div class="circle">
                         <span id="max-moisture">45%</span>
@@ -148,7 +147,7 @@
             <section id="farm-content"></section>
 
             <!-- Tabelas com dados para análise rápida -->
-            <section id="farm-table" class="dash-container"></section>
+            <section id="farm-table" class="table-container"></section>
         </section>
     </main>
 </body>

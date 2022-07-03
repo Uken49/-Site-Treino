@@ -90,19 +90,19 @@
         <section class="page-content">
             <!-- Legenda -->
             <section class="subtitle">
-                <div class="controlled">
+                <div class="controlado">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura ideal: <b>24°</b> entre
                         <b>30°</b></span>
                     <span> <img src="../assets/svg/full-circle.svg"> Umidade ideal: <b>16%</b> entre <b>18%</b></span>
                 </div>
 
-                <div class="moderate">
+                <div class="moderado">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura moderada: <b>23°</b> e
                         <b>31°</b></span>
                     <span> <img src="../assets/svg/full-circle.svg"> Umidade moderada: <b>15%</b> e <b>19%</b></span>
                 </div>
 
-                <div class="critical">
+                <div class="critico">
                     <span> <img src="../assets/svg/full-circle.svg"> Temperatura crítica: <b>22°</b> ou menos e
                         <b>32°</b> ou
                         mais</span>
@@ -115,13 +115,13 @@
             <!-- Métricas das maior/menor temperatura/umidade -->
             <section class="wrapper">
                 <!-- A maior/menor temperatura registrada no momento -->
-                <article class="metrics controlled">
+                <article class="metrics controlado">
                     <span>Menor Temperatura</span>
                     <div class="circle">
                         <span id="min_celsius">24&deg;</span>
                     </div>
                 </article>
-                <article class="metrics moderate">
+                <article class="metrics moderado">
                     <span>Maior Temperatura</span>
                     <div class="circle">
                         <span id="max_celsius">31&deg;</span>
@@ -129,13 +129,13 @@
                 </article>
 
                 <!-- A maior/menor umidade registrada no momento -->
-                <article class="metrics controlled">
+                <article class="metrics controlado">
                     <span>Menor Umidade</span>
                     <div class="circle">
                         <span id="moisture">17&percnt;</span>
                     </div>
                 </article>
-                <article class="metrics critical">
+                <article class="metrics critico">
                     <span>Maior Umidade</span>
                     <div class="circle">
                         <span id="moisture">45&percnt;</span>
@@ -144,192 +144,13 @@
             </section>
 
             <!-- Tabelas com dados para análise rápida -->
-            <section class="wrapper">
-                <!-- Tabela dos locais com mais perto do crítico -->
-                <article class="box">
-                    <h2 class="critical">
-                        Locais menos estáveis
-                    </h2>
-
-                    <table>
-                        <tbody>
-                            <tr class="critical">
-                                <th>Local</th>
-                                <th>Área</th>
-                                <th>Temperatura</th>
-                                <th>Umidade</th>
-                                <th>Status</th>
-                            </tr>
-                            <tr class="critical">
-                                <td>Fazenda 1</td>
-                                <td>Área 1</td>
-                                <td>13</td>
-                                <td>13</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="critical">
-                                <td>Fazenda 5</td>
-                                <td>Área 2</td>
-                                <td>52</td>
-                                <td>52</td>
-                                <td>Controlado</td>
-                            </tr>
-                            <tr class="critical">
-                                <td>Fazenda 1</td>
-                                <td>Área 2</td>
-                                <td>35</td>
-                                <td>64</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="moderate">
-                                <td>Fazenda 3</td>
-                                <td>Área 5</td>
-                                <td>20</td>
-                                <td>65</td>
-                                <td>Controlado</td>
-                            </tr>
-                            <tr class="moderate">
-                                <td>Fazenda 1</td>
-                                <td>Área 3</td>
-                                <td>12</td>
-                                <td>12</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="moderate">
-                                <td>Fazenda 5</td>
-                                <td>Área 3</td>
-                                <td>13</td>
-                                <td>13</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 5</td>
-                                <td>35</td>
-                                <td>36</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 3</td>
-                                <td>Área 4</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 4</td>
-                                <td>35</td>
-                                <td>335</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 3</td>
-                                <td>Área 2</td>
-                                <td>60</td>
-                                <td>60</td>
-                                <td>Controlado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </article>
-
-                <!-- Tabela dos locais com as melhores condições -->
-                <article class="box">
-                    <h2 class="controlled">
-                        Locais mais estáveis
-                    </h2>
-
-                    <table>
-                        <tbody>
-                            <tr class="controlled">
-                                <th>Local</th>
-                                <th>Área</th>
-                                <th>Temperatura</th>
-                                <th>Umidade</th>
-                                <th>Status</th>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 1</td>
-                                <td>13</td>
-                                <td>13</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 5</td>
-                                <td>Área 2</td>
-                                <td>52</td>
-                                <td>52</td>
-                                <td>Controlado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 2</td>
-                                <td>35</td>
-                                <td>64</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 3</td>
-                                <td>Área 5</td>
-                                <td>20</td>
-                                <td>65</td>
-                                <td>Controlado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 3</td>
-                                <td>12</td>
-                                <td>12</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 5</td>
-                                <td>Área 3</td>
-                                <td>13</td>
-                                <td>13</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 5</td>
-                                <td>35</td>
-                                <td>36</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 3</td>
-                                <td>Área 4</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>Moderado</td>
-                            </tr>
-                            <tr class="controlled">
-                                <td>Fazenda 1</td>
-                                <td>Área 4</td>
-                                <td>35</td>
-                                <td>335</td>
-                                <td>Crítico</td>
-                            </tr>
-                            <tr class="critical">
-                                <td>Fazenda 3</td>
-                                <td>Área 2</td>
-                                <td>60</td>
-                                <td>60</td>
-                                <td>Controlado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </article>
-
-            </section>
+            <section id="farm-table" class="table-container"></section>
 
             <!-- Gráfico de <decidir depois> -->
             <section class="wrapper">
                 <article class="fill">
-                    <div style="position: relative; height:93.5%; width:100%">
-                        <canvas id="chart_1" width="1200" height="281"></canvas>
+                    <div style="position: relative; height:100%; width:100%">
+                        <canvas id="chart-1" width="1200" height="281"></canvas>
                     </div>
                 </article>
             </section>

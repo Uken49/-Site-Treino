@@ -1,23 +1,20 @@
 // Sessões
-// document.getElementsByTagName("body")[0].addEventListener('load', validarSessao())
+document.getElementsByTagName("body")[0].addEventListener('load', validarSessao())
 
 function validarSessao() {
     const email = sessionStorage.EMAIL_USUARIO;
     const nome = sessionStorage.NOME_USUARIO;
-    const cargo = sessionStorage.CARGO_USUARIO;
 
-    const nomeEmpresa = sessionStorage.NOME_EMPRESA;
-    const cnpj = sessionStorage.CNPJ_EMPRESA;
-
-    const user_name = document.getElementById("user_name");
+    const span_user = document.getElementById("span_user");
 
     if (email != null && nome != null) {
-        user_name.innerHTML = nome
+        span_user.innerHTML = nome
     } else {
-        window.location = "../login.html";
+        limparSessao()
     }
 }
 
+document.getElementById("logout").addEventListener('click', limparSessao)
 function limparSessao() {
     sessionStorage.clear();
     window.location = "../login.html";

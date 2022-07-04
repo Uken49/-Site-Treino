@@ -24,7 +24,32 @@ BEGIN
     SET @fkEmpresa = (SELECT idEmpresa FROM Empresa WHERE cnpj = cnpj LIMIT 1);
     
     INSERT INTO Usuario (nomeUsuario, email, cargo, senha, fkEmpresa)
-		VALUES(nomeUsuario, email, cargo, senha, @fkEmpresa);
+		VALUES(nomeUsuario, email, cargo, MD5(senha), @fkEmpresa);
+	
+    # Verificando erro para dar o commit
+    IF erro_sql = FALSE THEN
+		COMMIT;
+        SELECT 'Cadastro realizado com sucesso.' AS Resultado;
+    ELSE
+		ROLLBACK;
+        SELECT 'Erro ao realizar cadastro.' AS Resultado;
+	END IF;
+    
+END$$
+DELIMITER ;
+
+# Procedure de cadastro usuário
+DELIMITER $$
+CREATE PROCEDURE stg_registrarFuncionario
+ (IN nomeUsuario VARCHAR(100), IN email VARCHAR(100), IN cargo VARCHAR(20), IN senha VARCHAR(255))
+BEGIN
+	DECLARE erro_sql TINYINT DEFAULT FALSE;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro_sql = TRUE;
+	
+    START TRANSACTION;
+    
+    INSERT INTO Usuario (nomeUsuario, email, cargo, senha)
+		VALUES(nomeUsuario, email, cargo, MD5(senha));
 	
     # Verificando erro para dar o commit
     IF erro_sql = FALSE THEN
@@ -54,6 +79,32 @@ BEGIN
 END$$
 DELIMITER ;
 
+# Procedure Para listar usuários da empresa e plotar na tabela
+DELIMITER $$
+CREATE PROCEDURE stg_listarUsuario (IN fkEmpresa INT)
+BEGIN
+	SET @fkEmpresa = fkEmpresa;
+    
+	SELECT Usuario.*
+	        FROM Usuario
+		        JOIN Empresa
+			        ON idEmpresa = fkEmpresa
+				WHERE fkEmpresa = @fkEmpresa;
+END$$
+DELIMITER ;
+
+# Procedure para excluir um funcionário
+DELIMITER $$
+CREATE PROCEDURE stg_excluirUsuario (IN idUsuario INT)
+BEGIN
+	SET @idUsuario = idUsuario;
+    
+	DELETE
+		FROM Usuario
+			WHERE idUsuario = @idUsuario;
+END$$
+DELIMITER ;
+
 # Procedure que junto ao evento, vai inserir os dados na tabela
 DELIMITER $$
 CREATE PROCEDURE stg_inserirDadosSensor
@@ -72,14 +123,3 @@ CREATE EVENT insert_dados
 		EVERY 5 SECOND
     DO
 		CALL stg_inserirDadosSensor (19, 39, 20, 45);
-
-
--- Usuário usado pelo sistema
-CREATE USER 'system'@'localhost' IDENTIFIED BY '#5_Sys_C0ntr0l_5@';
-
-GRANT EXECUTE ON PROCEDURE stg_cadastro TO 'system'@'localhost';
-GRANT EXECUTE ON PROCEDURE stg_entrar TO 'system'@'localhost';
-GRANT EXECUTE ON PROCEDURE stg_inserirDadosSensor TO 'system'@'localhost';
-GRANT SELECT ON AgroConsult. * TO 'system'@'localhost';
-
-FLUSH PRIVILEGES;

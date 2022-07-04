@@ -41,15 +41,15 @@ DELIMITER ;
 # Procedure de cadastro usuário
 DELIMITER $$
 CREATE PROCEDURE stg_registrarFuncionario
- (IN nomeUsuario VARCHAR(100), IN email VARCHAR(100), IN cargo VARCHAR(20), IN senha VARCHAR(255))
+ (IN nomeUsuario VARCHAR(100), IN email VARCHAR(100), IN cargo VARCHAR(20), IN senha VARCHAR(255), IN fkEmpresa INT)
 BEGIN
 	DECLARE erro_sql TINYINT DEFAULT FALSE;
 	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET erro_sql = TRUE;
 	
     START TRANSACTION;
     
-    INSERT INTO Usuario (nomeUsuario, email, cargo, senha)
-		VALUES(nomeUsuario, email, cargo, MD5(senha));
+    INSERT INTO Usuario (nomeUsuario, email, cargo, senha, fkEmpresa)
+		VALUES(nomeUsuario, email, cargo, MD5(senha), fkEmpresa);
 	
     # Verificando erro para dar o commit
     IF erro_sql = FALSE THEN
@@ -75,7 +75,7 @@ BEGIN
 			JOIN Empresa
 				ON fkEmpresa = idEmpresa
 			WHERE email = @email
-				AND senha = @senha;
+				AND senha = MD5(@senha);
 END$$
 DELIMITER ;
 

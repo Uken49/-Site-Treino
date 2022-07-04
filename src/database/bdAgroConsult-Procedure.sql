@@ -45,10 +45,12 @@ BEGIN
 	SET @email = email,
 		@senha = senha;
     
-     SELECT *
+	SELECT idUsuario, nomeUsuario, email, cargo, senha, idEmpresa, nomeEmpresa, cnpj
 		FROM Usuario
+			JOIN Empresa
+				ON fkEmpresa = idEmpresa
 			WHERE email = @email
-            AND senha = @senha;
+				AND senha = @senha;
 END$$
 DELIMITER ;
 

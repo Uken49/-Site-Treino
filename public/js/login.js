@@ -102,7 +102,6 @@ function login() {
                 sessionStorage.ID_EMPRESA = json[0].idEmpresa;
                 sessionStorage.NOME_EMPRESA = json[0].nomeEmpresa;
                 sessionStorage.CNPJ_EMPRESA = json[0].cnpj;
-                sessionStorage.LOGO_EMPRESA = json[0].logoEmpresa;
 
                 modalSucess()
                 setTimeout(() => {

@@ -246,14 +246,7 @@ function register() {
 
         if (resposta.ok) {
             // Logando o usuário e mandando para o dashboard/index
-
-            sessionStorage.EMAIL_USUARIO = email;
-            sessionStorage.NOME_USUARIO = nameUser;
-            
-            modalSucess()
-            setTimeout(() => {
-                window.location = "dashboard/index.html";
-            }, 1000);
+            login(email, pass)
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -311,4 +304,47 @@ function modalErro(phrase) {
     setTimeout(() => {
         modal_message.style.opacity = "0"
     }, 2000);
+}
+
+function login(email, pass) {
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            passServer: pass
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO login()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json[0]);
+                console.log(JSON.stringify(json[0]));
+
+                sessionStorage.ID_USUARIO = json[0].idUsuario;
+                sessionStorage.EMAIL_USUARIO = json[0].email;
+                sessionStorage.NOME_USUARIO = json[0].nomeUsuario;
+                sessionStorage.CARGO_USUARIO = json[0].cargo;
+
+                sessionStorage.ID_EMPRESA = json[0].idEmpresa;
+                sessionStorage.NOME_EMPRESA = json[0].nomeEmpresa;
+                sessionStorage.CNPJ_EMPRESA = json[0].cnpj;
+
+                modalSucess()
+                setTimeout(() => {
+                    window.location = "dashboard/index.html";
+                }, 1000);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }

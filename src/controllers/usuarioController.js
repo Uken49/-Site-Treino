@@ -1,6 +1,6 @@
-var usuarioModel = require("../models/usuarioModel");
+const usuarioModel = require("../models/usuarioModel");
 
-var sessoes = [];
+const sessoes = [];
 
 function testar(req, res) {
     console.log("ENTRAMOS NA usuarioController");
@@ -25,8 +25,8 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
-    var pass = req.body.passServer;
+    const email = req.body.emailServer;
+    const pass = req.body.passServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -60,12 +60,12 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nameUser = req.body.nameServer;
-    var nameCorp = req.body.nameCorpServer;
-    var cnpj = req.body.cnpjServer;
-    var email = req.body.emailServer;
-    var position = req.body.positionServer;
-    var pass = req.body.passServer;
+    const nameUser = req.body.nameServer;
+    const nameCorp = req.body.nameCorpServer;
+    const cnpj = req.body.cnpjServer;
+    const email = req.body.emailServer;
+    const position = req.body.positionServer;
+    const pass = req.body.passServer;
 
     // Faça as validações dos valores
     if (nameUser == undefined) {
@@ -101,9 +101,101 @@ function cadastrar(req, res) {
     }
 }
 
+function registrarusuario(req, res) {
+    const nameUser = req.body.nameServer;
+    const email = req.body.emailServer;
+    const position = req.body.positionServer;
+    const idEmpresa = req.body.idEmpresaServer;
+    const pass = req.body.passServer;
+
+    // Faça as validações dos valores
+    if (nameUser == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (position == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("idEmpresa está undefined!");
+    } else if (pass == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {     
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.registrarusuario(nameUser, email, position, pass, idEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function listarusuario(req, res) {
+    const idEmpresa = req.body.idEmpresaServer;
+
+    if (idEmpresa == undefined) {
+        res.status(400).send("Seu idEmpresa está undefined!");
+    } else {
+        usuarioModel.listarusuario(idEmpresa)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+                    console.log(resultado);
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao listar usuários! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function excluirusuario(req, res) {
+    const idUsuario = req.body.idUsuarioServer;
+
+    // Faça as validações dos valores
+    if (idUsuario == undefined) {
+        res.status(400).send("idUsuario está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.excluirusuario(idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao excluir esse usuário! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
+    registrarusuario,
+    listarusuario,
+    excluirusuario,
     listar,
     testar
 }

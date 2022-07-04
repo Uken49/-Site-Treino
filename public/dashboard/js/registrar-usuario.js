@@ -3,10 +3,10 @@ let passLabel = document.getElementById('label-img')
 passLabel.addEventListener("click", showPass)
 function showPass() {
     if (inp_pass.type == "password") {
-        passLabel.src = "../assets/img/eye_open.svg"
+        passLabel.src = "../assets/svg/eye_open.svg"
         inp_pass.type = "text"
     } else {
-        passLabel.src = "../assets/img/eye_closed.svg"
+        passLabel.src = "../assets/svg/eye_closed.svg"
         inp_pass.type = "password"
     }
 }
@@ -64,23 +64,20 @@ function valName() {
 }
 
 // Validando cargo
-document.getElementById('inp_name').addEventListener("keyup", valName)
+document.getElementById('inp_position').addEventListener("keyup", valName)
 function valPosition() {
-    let position = document.getElementById('inp_name').value
-    let regex = /^[a-z].* {1,}[a-z]{1,}/gi
+    const position = document.getElementById('inp_position').value
 
     // Validando a quantidade de palavra e caracteres
-    if (position == '') {
+    if (position.length <= 2) {
         return false
-    }
-
-    if (regex.test(position)) {
-        return true
     }
 
     if (position == "Dono" || position == "Chefe") {
         return false
     }
+
+    return true
 }
 
 document.getElementsByClassName("btn-register")[0].addEventListener("click", registerCheck)
@@ -91,28 +88,24 @@ function registerCheck() {
     register()
 }
 
-function registraruser() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = inp_name.value;
-    var emailVar = inp_email.value;
-    var senhaVar = inp_pass.value;
-    var cnpj = sessionStorage.EMPRESA_CNPJ;
-    var cargo = inp_position.value
-    // Enviando o valor da nova input
-    fetch("/usuarios/registraruser", {
+function register() {
+    const nomeVar = inp_name.value;
+    const emailVar = inp_email.value;
+    const idEmpresa = sessionStorage.ID_EMPRESA;
+    const senhaVar = inp_pass.value;
+    const cargo = inp_position.value;
+
+    fetch("/usuarios/registrarusuario", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
+            nameServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar,
-            cnpjServer: cnpj,
-            cargoServer: cargo
+            positionServer: cargo,
+            idEmpresaServer: idEmpresa,
+            passServer: senhaVar
         })
     }).then(function (resposta) {
 
@@ -120,7 +113,9 @@ function registraruser() {
 
         if (resposta.ok) {
             alert("Usuario Registrado com Sucesso!");
-
+            setTimeout(() => {
+                window.location = 'registrar-usuario.html'
+            }, 1000);
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -132,15 +127,15 @@ function registraruser() {
 }
 
 // Chamando função para listar usuário na tabela
-window.onload = listarUsuario(sessionStorage.EMPRESA_CNPJ)
-function listarUsuario(cnpj) {
+window.onload = listarUsuario(sessionStorage.ID_EMPRESA)
+function listarUsuario(idEmpresa) {
     fetch("/usuarios/listarusuario", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            cnpjServer: cnpj
+            idEmpresaServer: idEmpresa
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
@@ -154,15 +149,14 @@ function listarUsuario(cnpj) {
 }
 
 function plotarTabela(resposta) {
-    let tabela = document.getElementById("tabela")
+    const tabela = document.getElementById("tabela")
     const qtdFuncionario = document.getElementById("qtdFuncionario")
-
 
     resposta.json().then(json => {
         console.log(json);
         console.log(JSON.stringify(json));
 
-        let count = Object.keys(json).length;
+        const count = Object.keys(json[0]).length;
         console.log(count);
 
         qtdFuncionario.innerHTML = `${count} Usuário(s) encontrado`
@@ -172,18 +166,18 @@ function plotarTabela(resposta) {
             tabela.innerHTML +=
                 `
             <tr>
-                <th class="txt-center">${json[i].idUsuario}</th>
-                <td>${json[i].nomeUsuario}</td>
-                <td>${json[i].email}</td>
-                <td>${json[i].cargo}</td>
+                <th class="txt-center">${i+1}</th>
+                <td>${json[0][i].nomeUsuario}</td>
+                <td>${json[0][i].email}</td>
+                <td>${json[0][i].cargo}</td>
                 <td class="pass">
                     <span>******</span>
-                    <img src="../assets/img/eye_closed.svg" alt="Ver senha" title="Ver senha">
+                    <img src="../assets/svg/eye_closed.svg" alt="Ver senha" title="Ver senha">
                 </td>
-                <td class="txt-center"><img src="../assets/img/pencil_writing.svg" alt="Editar usuário"
+                <td class="txt-center"><img src="../assets/svg/pencil_writing.svg" alt="Editar usuário"
                         title="Editar usuário"></td>
-                <td class="txt-center delete"><img src="../assets/img/delete.svg" alt="Deletar usuário"
-                        title="Deletar usuário" onclick="excluirUsuario(${json[i].idUsuario},${sessionStorage.EMPRESA_CNPJ} ) "></td> 
+                <td class="txt-center delete"><img src="../assets/svg/delete.svg" alt="Deletar usuário"
+                        title="Deletar usuário" onclick="excluirUsuario(${json[0][i].idUsuario}) "></td> 
             </tr>
         `
         }
@@ -192,26 +186,23 @@ function plotarTabela(resposta) {
 
 }
 
-function excluirUsuario(idUsuario, cnpj) {
-    // Enviando o valor da nova input
-    fetch("/usuarios/excluirUsuario", {
+function excluirUsuario(idUsuario) {
+    fetch("/usuarios/excluirusuario", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            idUsuarioServer: idUsuario,
-            cnpjServer: cnpj
+            idUsuarioServer: idUsuario
         })
     }).then(function (resposta) {
-
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            console.log("Funcionário excluido com Sucesso!");
-
+            alert("Funcionário excluido com Sucesso!");
+            setTimeout(() => {
+                window.location = 'registrar-usuario.html'
+            }, 1000);
         } else {
             throw ("Houve um erro ao excluir funcionários!");
         }

@@ -1,5 +1,4 @@
 // Checando se a senha é válida
-
 function passCheck() {
     const pass = document.getElementById('inp_pass').value
     const regex = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/
@@ -107,8 +106,7 @@ function valNameCorp() {
 
 // Validando CNPJ
 function valCnpj() {
-    const cnpj = document.getElementById('inp_cnpj').value;
-    cnpj = cnpj.replace(/[^\d]+/g, '');
+    const cnpj = document.getElementById('inp_cnpj').value.replace(/[^\d]+/g, '');
 
     if (cnpj == '') {
         label_cnpj.className = 'label-float invalid'
@@ -214,7 +212,6 @@ function registerCheck() {
 }
 
 // Enviando os dados para o banco
-
 function register() {
     wait()
 

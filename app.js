@@ -1,17 +1,17 @@
 process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 // process.env.AMBIENTE_PROCESSO = "producao";
 
-var express = require("express");
-var cors = require("cors");
-var path = require("path");
-var PORTA = 3333;
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const PORTA = 3333;
 
-var app = express();
+const app = express();
 
-var indexRouter = require("./src/routes/index");
-var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
-var medidasRouter = require("./src/routes/medidas");
+const indexRouter = require("./src/routes/index");
+const usuarioRouter = require("./src/routes/usuarios");
+const avisosRouter = require("./src/routes/avisos");
+const medidasRouter = require("./src/routes/medidas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
